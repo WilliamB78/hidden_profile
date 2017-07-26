@@ -84,6 +84,12 @@ $user
     ->bind('resume_delete')
 ;
 
+// route pour modifier les infos perso de l'utilisateur
+$user
+    ->match('/modification_utilisateur', 'user.controller:editAction')
+    ->bind('user_edit_profile')
+;
+
 // ROUTE D'ENREGISTREMENT CONNEXION ET DECONNEXION UTILISATEURS ET ENTREPRISE DIMITRI ////// 
 
 $app
@@ -119,45 +125,45 @@ $app
 
 ///////////////////////////////////////////////////////////////////////
 
-// route pour modifier les infos perso de l'utilisateur
-$user
-    ->match('/modification_utilisateur', 'user.controller:editAction')
-    ->bind('user_edit_profile')
-;
-
+// route for company dashboard
 $company
     ->get('/', 'company.controller:indexAction')
     ->bind('company_dashboard')
 ;
-
+// route for company profile editing page
 $company
     ->match('/profil', 'company.controller:editAction')
     ->bind('company_edit_profile')
 ;
-
+// route for resume search
 $company
     ->get('/recherche_cv', 'company.controller:searchResumeAction')
     ->bind('company_resume_search')
 ;
-
+// route for tokens ordering
 $company
     ->match('/commander_jetons', 'company.controller:orderTokensAction')
     ->bind('order_tokens')
 ;
-
+// route for orders consulting
 $company
     ->get('/historique_commandes', 'order.controller:indexAction')
     ->bind('orders_history')
 ;
-
+// route for selected resume consulting
 $company
     ->get('/consulter_cv/{reference}', 'company.controller:showResumeAction')
     ->bind('company_show_resume')
 ;
-
+// route for favorites resumes consulting
 $company
-    ->get('/cv_favoris', 'company.controller:showFavoritesResumes')
+    ->get('/cv_favoris', 'company.controller:showFavoritesResumesAction')
     ->bind('company_favorites_resumes')
+;
+//route for adding favorite resume
+$company
+    ->post('ajout_favori/{reference}', 'company.controller:addFavoriteResumeAction')
+    ->bind('company_add_favorite')
 ;
 
 // ---------------------- Admin Dashboard ---------------------------------
