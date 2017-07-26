@@ -10,8 +10,7 @@
         <div id="header-box" class="col-md-12">
             <h3 class="resume-title resume-title-info-perso"> INFORMATIONS PERSONNELLES</h3>
             <ul>
-                <li>Prénom : <span id="span-firstname">{% if user is not empty %}{{ user.firstname }}{% endif %}</span></li>
-                <li>Nom : <span id="span-lastname">{% if user is not empty %}{{ user.lastname }}{% endif %}</span></li>
+                <li><strong><span id="span-firstname">{% if user is not empty %}{{ user.firstname }}{% endif %}</span> {% if user is not empty %}{{ user.lastname|upper }}{% endif %}</span></strong></li>
                 <li>Email : <span id="span-email">{% if user is not empty %}{{ user.email }}{% endif %}</span></li>
                 <li>Téléphone : <span id="span-telephone">{% if user is not empty %}{{ user.telephone }}{% endif %}</span></li>
                 <li>Code postal : <span id="span-postcode">{% if user is not empty %}{{ user.postcode }}{% endif %}</span></li>
@@ -51,11 +50,18 @@
                 var url = '{{ path('company_reveal_resume', {resumeId: resume.id}) }}';
                 //let url = "reveler_cv/" + resumeId;
                 $.post(url, function (response){
+                    if (response != "error"){
                     console.log(response);
                     $('#header-box').show();
                     $('#box-buttons').fadeOut(400);
                     
                     $('#span-firstname').text(response.firstname);
+                    $('#span-lastname').text(response.lastname);
+                    $('#span-email').text(response.email);
+                    $('#span-telephone').text(response.telephone);
+                    $('#span-postcode').text(response.postcode);
+                } else {
+                }
                 });
             });
     

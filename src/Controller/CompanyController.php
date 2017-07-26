@@ -424,6 +424,15 @@ class CompanyController extends ControllerAbstract{
     
     public function revealResumeAction($resumeId)
     {
+        $company = $this->session->get('company');  
+        
+        $companyId = $company->getId(); 
+        
+        
+        if ($this->app['company.repository']->nbOfTokens($companyId) == 0){
+            return 'error';
+        }else{
+               
         // Insère l'id company et l'id resume dans table command
         $command = new Command();
         
@@ -451,5 +460,7 @@ class CompanyController extends ControllerAbstract{
         $user = $this->app['user.repository']->findByResume($resumeId);
         
         return new JsonResponse($user->toArray());
+        
+        }
     }
 }

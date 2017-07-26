@@ -485,7 +485,10 @@ footer a:hover{
     background-size: cover;   
     margin: 0;
     padding: 0;
-    height: 295px;
+    height: 250px;
+}
+#header-box{
+    padding-top: 40px;
 }
 
 .box-resume .box-header-company img{
@@ -493,13 +496,13 @@ footer a:hover{
     top: 0;
     left: 0;
     width: 700px;
-    height: auto;
+    height: 250px;
     z-index: 1;
 }
 
 .box-resume .box-header-company button{
     position: absolute;
-    top: 0;
+    top: -171px;
     left: 0;
     width: 100%;
     margin: 0;
