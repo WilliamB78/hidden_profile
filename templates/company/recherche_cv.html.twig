@@ -77,7 +77,7 @@
                 <p>Années d'expérience : {{ resume.yearOfExperience }}</p>
                 <p>Last Job : {{ resume.jobName }}</p>
                 <p>Last Diploma : {{ resume.name }}</p>
-                <a href="{{ path('company_show_resume', {reference : resume.reference }) }}" class="btn btn-default" target="_blank">Consulter <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>  <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
+                <a href="{{ path('company_show_resume', {reference : resume.reference }) }}" class="btn btn-default" target="_blank">Consulter <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>  <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon {% if resume.favorite is null %}glyphicon-star-empty{% else %}glyphicon-star{% endif %}" aria-hidden="true"></span></button>
 
             </div>
           </div>
@@ -96,8 +96,9 @@
             //alert('ok');
             $('.favori-btn').click(function(e){
                 e.preventDefault();
-                let ref = $('.favori-btn').attr('reference');
+                let ref = $(this).attr('reference');
                 let url = "ajout_favori/" + ref;
+                console.log(ref);
                 $.post(url, function (response){
                 $('#star' + ref).css('color', 'orange');
               });

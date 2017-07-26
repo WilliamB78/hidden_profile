@@ -50,6 +50,17 @@ class CustomBuild {
      */
     private $reference;
     
+    private $favorite;
+    
+    function getFavorite() {
+        return $this->favorite;
+    }
+
+    function setFavorite($favorite) {
+        $this->favorite = $favorite;
+    }
+
+        
     public function getReference() {
         return $this->reference;
     }

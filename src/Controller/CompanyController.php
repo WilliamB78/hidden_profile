@@ -303,13 +303,13 @@ class CompanyController extends ControllerAbstract{
                  $filters[] = " AND skills LIKE '%$_GET[competences]%'"; 
              }
         
-             $resumes = $this->app['resume.repository']->findByJob($_GET['titre_poste'], $filters);
+            $idCompany = $this->session->get('company')->getId();
              
-             $idCompany = $this->session->get('company')->getId();
+             $resumes = $this->app['resume.repository']->findByJob($_GET['titre_poste'],$idCompany, $filters);
              
              $favoris = $this->app['favorite.repository']->findByIdCompany($idCompany);
              
-                               
+                                      
             return $this->render('company/recherche_cv.html.twig', 
             [
                 'resumes' => $resumes,

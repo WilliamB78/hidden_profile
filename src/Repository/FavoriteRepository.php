@@ -74,6 +74,6 @@ class FavoriteRepository extends RepositoryAbstract {
         return $favoris;
        
     }
-
+    
 }
 

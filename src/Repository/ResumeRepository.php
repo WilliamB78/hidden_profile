@@ -131,13 +131,14 @@ EOS;
         $this->persist($data, $where);
     }
 
-    public function findByJob($job, array $filters)
+    public function findByJob($job,$idCompany, array $filters)
     {
         $query = <<<EOS
-SELECT resume.*, study.*, experience.job_name, experience.user_id, SUM(experience.year_of_experience) AS total_year_of_experience 
+SELECT resume.*, study.*, favorites.id AS favorite, experience.job_name, experience.user_id, SUM(experience.year_of_experience) AS total_year_of_experience 
 FROM resume 
 JOIN experience ON experience.user_id = resume.user_id
 JOIN study ON study.user_id = resume.user_id
+LEFT JOIN favorites ON favorites.id_resume = resume.id AND favorites.id_company = $idCompany
 WHERE resume.desired_job LIKE '%$job%' 
 GROUP BY resume.user_id
 EOS;
@@ -147,9 +148,7 @@ EOS;
         
         $dbResumes = $this->db->fetchAll($query);
         $resumes = [];
-        
-        //echo '<pre>';var_dump($dbResumes);echo '</pre>';die;
-        
+               
         foreach($dbResumes as $dbResume)
         {
             $resume = $this->buildCustomResume($dbResume);
@@ -173,6 +172,7 @@ EOS;
             ->setYearOfExperience($dbResults['total_year_of_experience'])
             ->setName($dbResults['name'])
             ->setJobName($dbResults['job_name'])
+            ->setFavorite($dbResults['favorite'])
         ;
         
         return $customResume;
