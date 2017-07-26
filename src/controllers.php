@@ -37,6 +37,12 @@ $app->match('/share', function () use ($app) {
 })
 ->bind('share')
 ;
+$app->match('/advises', function () use ($app) {
+    return $app['twig']->render('resume/advises_cv.html.twig', array());
+})
+->bind('advises')
+;
+
 
 $app->match('/contact_us', function () use ($app) {
     return $app['twig']->render('contact.html.twig', array());
