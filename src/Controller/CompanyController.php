@@ -414,11 +414,13 @@ class CompanyController extends ControllerAbstract{
         
         $idCompany = $this->session->get('company')->getId();
         
-        $idResume = $this->app['user.repository']->findIdResumeByReference($reference);
+        $resumeInfos = $this->app['user.repository']->findIdResumeByReference($reference);
              
         $favorite
-                ->setIdResume($idResume)
+                ->setIdResume($resumeInfos['id'])
+                ->setJob($resumeInfos['desired_job'])
                 ->setIdCompany($idCompany)
+                ->setReference($reference)
                 ;
         
         $idFavorite = $this->app['favorite.repository']->findByIdCompanyAndIdResume($idCompany, $idResume);

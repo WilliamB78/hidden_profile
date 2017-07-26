@@ -191,7 +191,11 @@ $company
     ->bind('company_reveal_resume')
 ;
 
-
+// route to order tokens
+$company
+    ->post('/commande_jetons_valider', 'order.controller:orderTokensAction')
+    ->bind('company_order_tokens_validate')
+;
 
 // ---------------------- Admin Dashboard ---------------------------------
 

@@ -31,8 +31,10 @@
         <div class="col-lg-4 col-sm-6 col-xs-12 recruteur_token">
             <div class="box-token">
                 <h3>VOS JETONS</h3><hr/>
+
                 <ul>
                     <li>Vous avez {{ company.nbOfTokens }} jeton{% if company.nbOfTokens > 1 %}s{% endif %}.</li>
+
                     <li><a class="underlined" href="{{ path('order_tokens') }}">Acheter des jetons</a></li>
                 </ul>
             </div>

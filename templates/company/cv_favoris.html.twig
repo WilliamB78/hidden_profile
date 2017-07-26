@@ -4,5 +4,29 @@
     
 {% block content %}
     
+        <br><br>
+    <h1 class="text-center">Vos CV favoris</h1>
+    <br>
+    
+    <table class="table table-striped table-bordered " style="border: solid black 1px;">
+        <thead>
+            <th class="text-center" style="border: solid black 1px;">Date</th>
+            <th class="text-center" style="border: solid black 1px;">Référence</th>
+            <th class="text-center" style="border: solid black 1px;">Titre de poste</th>
+            <th class="text-center" style="border: solid black 1px;">Supprimer</th>
+        </thead>
+        <tbody>
+            {% for favori in favoris %}
+                <tr class="text-center" >
+                    <td style="border: solid black 1px; font-size: 20px;">{{ favori.date|date('d/m/y - H:i:s') }}</td>
+                    <td style="border: solid black 1px; font-size: 20px;"><a href="{{ path('company_show_resume', {reference : favori.reference}) }}" target="_blank">{{ favori.reference }}</a></td>
+                    <td style="border: solid black 1px; font-size: 20px;">{{ favori.job }}</td>
+                    <td style="border: solid black 1px; font-size: 20px;"><button class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        
+        
+    </table>
     
 {% endblock %}

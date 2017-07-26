@@ -19,7 +19,7 @@
         <tbody>
             {% for order in orders %}
                 <tr class="text-center" >
-                    <td style="border: solid black 1px; font-size: 20px;">{{ order.orderdate|date('d/m/Y - H:m:s') }}</td>
+                    <td style="border: solid black 1px; font-size: 20px;">{{ order.orderdate|date('d/m/Y - H:i:s') }}</td>
                     <td style="border: solid black 1px; font-size: 20px;">{{ order.amount }}</td>
                     <td style="border: solid black 1px; font-size: 20px;">{{ order.nbOfTokens }}</td>
                 </tr>
