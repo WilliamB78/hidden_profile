@@ -1,19 +1,27 @@
 $(function(){
 
-     $(".add_block").click(function(e){
+     $(".add_bloc_experience").click(function(e){
          e.preventDefault();
 
          $(".bloc_experience:last").clone()
                                    .find("input, textarea").val("").end()
-                                   .appendTo(".add_exp");
+                                   .appendTo(".add_experience");
      });
 
-     $(".add_block2").click(function(ev){
+     $(".add_bloc_formation").click(function(ev){
          ev.preventDefault();
 
          $(".bloc_formation:last").clone()
                                  .find("input, textarea").val("").end()
-                                 .appendTo(".add_forma");
+                                 .appendTo(".add_formation");
+     });
+
+     $(".add_bloc_langue").click(function(eve){
+         eve.preventDefault();
+
+         $(".bloc_langue:last").clone()
+                                 .find("input, textarea").val("").end()
+                                 .appendTo(".add_langue");
      });
 
      $('.inner-header').next().hide();

@@ -3,5 +3,22 @@
 {% block title 'CV Réf : ' %}
 
 {% block content %}
+<div class="box-resume"> 
+    {#<a href="{{ path('company_resume_search') }}"><< Revenir à la recherche</a>#}
+    
+    <div class="row box-header box-header-company">
+        {#<img src="{{ asset('img/bigLogo.png') }}" alt=""/>#}
+        
+        <div class="col-md-6">
+            <a href="" class="btn btn-default"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</a>
+        </div>
+        <div class="col-md-6">
+            <a href="" class="btn btn-default"><i class="fa fa-star-o" aria-hidden="true"></i> Ajouter ce CV à vos favoris</a>
+        </div>
+    </div>
+    
+    {# Rendu du CV #}
+    {% include 'resume/resume_display.html.twig' %} {# Inclusion du fichier de l'affichage standard du CV #}
+</div>
 
 {% endblock %}

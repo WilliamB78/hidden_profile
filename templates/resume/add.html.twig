@@ -11,7 +11,7 @@
             <select name="professionnal_domain" class="form-control">
                 <option value="">Choisir le domaine professionnel</option>
                 <option value="administration">Administration</option>
-                <option value="banque"</option>
+                <option value="banque">Banque</option>
                 <option value="Audit">Audit</option>
                 <option value="architecture">Architecture</option>
                 <option value="btp">BTP</option>
@@ -45,7 +45,7 @@
 
         <div class="form-group">
             <label>Poste recherché <span class="red-star">*</span></label>
-            <input type="text" name="desired_job" class="form-control" placeholder="Poste recherché">
+            <input type="text" name="desired_job" class="form-control" value="{% if post is not empty %}{{ post.desiredJob }}{% endif %}" placeholder="Poste recherché">
         </div>
 
         <div class="form-group">
@@ -102,7 +102,7 @@
             <a href='' class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a><br>
         </div> {# Fin accordeon experience #}
 
-        <h2 class="resume-title resume-title-formations inner-header"> Formations</h2>
+        <h2 class="resume-title resume-title-formations inner-header"> FORMATIONS</h2>
 
         <div class="accordeon">
             <div class='bloc_formation'>
@@ -134,7 +134,7 @@
             <a href='' class="add_bloc_formation">+ Ajouter une formation +</a><br>
         </div> {# Fin accordeon formation #}
         
-        <h2 class="resume-title resume-title-competences inner-header"> Compétences</h2>
+        <h2 class="resume-title resume-title-competences inner-header"> COMPETENCES</h2>
         
         <div class="accordeon">
             <div class="form-group">
@@ -148,7 +148,7 @@
             </div>
         </div> {# Fin accordeon competences #}
 
-        <h2 class="resume-title resume-title-langues inner-header"> Langues</h2>
+        <h2 class="resume-title resume-title-langues inner-header"> LANGUES</h2>
         
         <div class="accordeon">
             <div class="bloc_langue">
@@ -189,7 +189,7 @@
             <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br>
         </div> {# Fin accordeon langues #}
         
-        <h2 class="resume-title resume-title-centres-interet inner-header"> Centres d'intérêt</h2>
+        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET</h2>
         
         <div class="accordeon">
             <div class="form-group">
