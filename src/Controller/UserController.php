@@ -78,7 +78,7 @@ class UserController extends ControllerAbstract
                 $this->app['user.repository']->save($user);
                 $this->app['user.manager']->login($user);
 
-               return $this->redirectRoute('login_user'); // Redirection vers la page connexion
+               return $this->redirectRoute('user_dashboard'); // Redirection vers la page connexion
             } else {
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $msg .= '<br>' . implode('<br>', $errors);

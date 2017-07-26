@@ -1,14 +1,16 @@
 <?php
 
+use Controller\Admin\AdminsController as AdminAdminsController;
 use Controller\Admin\OrderController as AdminOrderController;
 use Controller\CompanyController;
 use Controller\OrderController;
 use Controller\ResumeController;
 use Controller\UserController;
+use Repository\CommandRepository;
 use Repository\CompanyRepository;
-use Repository\LanguageRepository;
 use Repository\ExperienceRepository;
 use Repository\FavoriteRepository;
+use Repository\LanguageRepository;
 use Repository\OrderRepository;
 use Repository\ResumeRepository;
 use Repository\SkillRepository;
@@ -92,6 +94,9 @@ $app['admin.order.controller']= function () use ($app){
     return new AdminOrderController($app);
 };
 
+$app['admin.admins.controller']= function () use ($app){
+    return new AdminAdminsController($app);
+};
 /* Déclaration des repositories en service */
 $app['resume.repository'] = function () use ($app) {
     return new ResumeRepository($app['db']);

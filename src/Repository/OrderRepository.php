@@ -32,7 +32,7 @@ class OrderRepository extends RepositoryAbstract{
         ];
 
         $where = !empty($order->getId())
-            ? ['id' => $company->getId()]
+            ? ['id' => $order->getId()]
             : null
         ;
 
@@ -93,7 +93,7 @@ class OrderRepository extends RepositoryAbstract{
     {
         
         $dbOrder = $this->db->fetchAssoc(
-            'SELECT * FROM orders',
+            'SELECT * FROM orders WHERE id = :id',
             [':id' => $id]
         );
 
