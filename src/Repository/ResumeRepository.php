@@ -148,14 +148,16 @@ EOS;
         
         $dbResumes = $this->db->fetchAll($query);
         $resumes = [];
-               
+        
+        
+        
         foreach($dbResumes as $dbResume)
         {
             $resume = $this->buildCustomResume($dbResume);
             $resumes[] = $resume;
         }
         
-        //echo '<pre>';var_dump($resume);echo '</pre>';die;
+        
         return $resumes;
     }
     

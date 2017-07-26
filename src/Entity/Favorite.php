@@ -21,7 +21,7 @@ class Favorite {
     
     private $idCompany;
     
-    private $reference;
+
     
     public function getIdResume() {
         return $this->idResume;
@@ -31,9 +31,7 @@ class Favorite {
         return $this->idCompany;
     }
 
-    public function getReference() {
-        return $this->reference;
-    }
+
 
     public function setIdResume($idResume) {
         $this->idResume = $idResume;
@@ -45,10 +43,7 @@ class Favorite {
         return $this;
     }
 
-    public function setReference($reference) {
-        $this->reference = $reference;
-        return $this;
-    }
+   
 
     public function getId() {
         return $this->id;
