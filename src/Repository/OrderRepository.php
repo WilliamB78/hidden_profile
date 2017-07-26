@@ -58,7 +58,7 @@ class OrderRepository extends RepositoryAbstract{
     public function findOrderByIdCompany($idCompany)
     {
         $dbOrders = $this->db->fetchAll(
-                'SELECT * FROM orders WHERE id_company = :id' ,
+                'SELECT * FROM orders WHERE id_company = :id ORDER BY order_date ASC' ,
                 [':id' => $idCompany]
         );
         
