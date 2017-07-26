@@ -61,7 +61,7 @@
         <div class="accordeon">
             {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_experience pour chaque formation #}
             {% for experience in experiences %}
-                <div class="bloc_experience">
+                <div class="bloc_experience" database_id="{{ experience.id }}">
                     <input type="hidden" name="nb_of_experiences[]">
 
                     <label>Nom du poste</label>
@@ -91,11 +91,19 @@
                         <option value="6ans_9ans" {% if experience.yearOfExperience == '6ans-9ans' %}selected{% endif %}>6 ans à 9 ans</option>
                         <option value="superieur_10ans" {% if experience.yearOfExperience == 'superieur 10ans' %}selected{% endif %}>Supérieur à 10 ans</option>
                     </select>
+                    
+                    <br>
+        
+                     <button class="btn btn-danger button_remove" type="button">Supprimer</button>
+        
+                    <br>
 
                     <div class="col-md-12">
+ 
                         <hr class="trait-gris">
                     </div>
                 </div>
+
             {% endfor %}
 
             <div class='add_experience'></div>
@@ -210,8 +218,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }} {# reprend le contenu du bloc qu'on surcharge #}
-    {# permet d'ajouter des choses plutôt que de les remplacer #}
+    {{ parent() }} 
     
     <script type="text/javascript" src="{{ asset('js/add_block_resume.js') }}"></script>
 {% endblock %}

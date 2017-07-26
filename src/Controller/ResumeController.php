@@ -10,15 +10,6 @@ use Entity\Study;
 
 class ResumeController extends ControllerAbstract
 {
-    public function listAction()
-    {
-        $resumes = $this->app['resume.repository']->findAll();
-        
-        return $this->render(
-            'resume/list.html.twig',
-            ['resumes' => $resumes]
-        );
-    }
     
     // Méthode pour ajouter ou modifier un CV
     public function editAction($id = null)
@@ -36,7 +27,7 @@ class ResumeController extends ControllerAbstract
             {
                 $experiencesId[] = $experiences[$i]->getId(); // Récupération dans un array des id des expériences pro de l'utilisateur
             }
-            
+
             $studies = $this->app['study.repository']->findByUser($userId);
             for($i = 0; $i < count($studies); $i++)
             {
@@ -62,6 +53,9 @@ class ResumeController extends ControllerAbstract
             $studies = new Study;
             $skills = new Skill;
             $languages = new Language;
+            
+            // new security manager object to clean $_POST values (XSS)
+            $this->app['security.manager']->sanitizePost();
             
             // Stockage du nombre d'expériences, de formations et de langues que l'utilisateur a entré dans le formulaire
             $nb_of_experiences = count($_POST['nb_of_experiences']);
@@ -131,13 +125,11 @@ class ResumeController extends ControllerAbstract
                     ->setUser($this->app['user.manager']->getUser()) // Récupération des informations (en session) de l'utilisateur connecté
                 ;  
             
-            // new security manager object to clean $_POST values (XSS)
-            $this->app['security.manager']->sanitizePost();
             
             // Vérifications des erreurs :
             
             // Vérification des champs de la table 'resume'
-            if(empty($_POST['professionnal_domain']))
+//            if(empty($_POST['professionnal_domain']))
 //            {
 //                $errors['professionnal_domain'] = 'Le domaine professionnel est obligatoire !';
 //            }
@@ -239,20 +231,8 @@ class ResumeController extends ControllerAbstract
                 $message = '<b>Le formulaire contient des erreurs</b>';
                 $message .= '<br>' . implode('<br>', $errors);
                 $this->addFlashMessage($message, 'error');
-                
-                //var_dump($resume);die;
-                
-                return $this->render(
-                'resume/edit.html.twig',
-                [
-                    'resume' => $resume,
-                    'experiences' => $experiences,
-                    'studies' => $studies,
-                    'skills' => $skills,
-                    'languages' => $languages,
-                    'post' => $_POST
-                ]
-            );
+
+               
             }
         }
         
@@ -299,5 +279,11 @@ class ResumeController extends ControllerAbstract
         $this->addFlashMessage('Le CV a été supprimé !');
         
         return $this->redirectRoute('user_dashboard');
+    }
+    
+    public function deleteExperienceAction($id)
+    {
+        $this->app['experience.repository']->deleteByExperienceId($id);
+        return 'Suppression';
     }
 }

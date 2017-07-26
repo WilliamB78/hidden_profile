@@ -1,11 +1,15 @@
 $(function(){
+    
+    let blocExperience = $('.bloc_experience').first().clone();
 
      $(".add_bloc_experience").click(function(e){
          e.preventDefault();
 
-         $(".bloc_experience:last").clone()
+         blocExperience
                                    .find("input, textarea").val("").end()
-                                   .appendTo(".add_experience");
+                                   .attr('database_id', null)
+                                   .insertBefore(".add_experience");
+
      });
 
      $(".add_bloc_formation").click(function(ev){
@@ -37,6 +41,22 @@ $(function(){
     
      $('.resume-form').on('click',function(evt){
 		evt.stopPropagation();
+
+     });
+     
+     $('body').on('click','.button_remove', function(){
+         
+        let divParent = $(this).parent();
+        if (divParent.hasClass('bloc_experience') === true){
+            databaseId = divParent.attr('database_id');
+            let url = '../supprimer_experience/' + databaseId;
+//            $.post(url, function (response){
+//               console.log(response);           
+//            });
+            
+        }
+        console.log(blocExperience);
+        divParent.fadeOut(100);
 
      });
 });

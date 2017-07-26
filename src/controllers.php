@@ -84,12 +84,6 @@ $user
     ->bind('user_dashboard')
 ;
 
-// Route pour afficher tous les CV
-$company
-    ->match('/resumes', 'resume.controller:listAction')
-    ->bind('resumes')
-;
-
 // Route pour mettre à jour un CV
 $user
     ->match('/resume/{id}', 'resume.controller:editAction')
@@ -107,6 +101,12 @@ $user
 $user
     ->match('/modification_utilisateur', 'user.controller:editAction')
     ->bind('user_edit_profile')
+;
+
+//route pour supprimer une experience
+$user
+    ->post('/supprimer_experience/{id}', 'resume.controller:deleteExperienceAction')
+    ->bind('user_delete_experience')
 ;
 
 // ROUTE D'ENREGISTREMENT CONNEXION ET DECONNEXION UTILISATEURS ET ENTREPRISE DIMITRI ////// 

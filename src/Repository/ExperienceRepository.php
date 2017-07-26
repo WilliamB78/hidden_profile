@@ -18,13 +18,14 @@ SELECT e.*
 FROM experience e
 JOIN user u On e.user_id = u.id
 WHERE u.id = :id
+GROUP BY e.id
 EOS;
         
         $dbExperiences = $this->db->fetchAll(
             $query,
             [':id' => $userId]
         );
-        
+
         $experiences = [];
         
         foreach($dbExperiences as $dbExperience)
@@ -84,5 +85,10 @@ EOS;
     public function delete($userId)
     {
         $this->db->delete('experience', ['user_id' => $userId]);
+    }
+    
+    public function deleteByExperienceId($experienceId)
+    {
+        $this->db->delete('experience', ['id' => $experienceId]);
     }
 }
