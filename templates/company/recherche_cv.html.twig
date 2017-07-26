@@ -4,7 +4,10 @@
 {% block title 'Recherche de CV' %}
 
 {% block content %}
-    
+
+<h1 class='titre-espace'>RECHERCHE</h1>
+<hr class="trait-bleu">
+
     <form  method="get">
     <fieldset>
 
@@ -71,17 +74,25 @@
         
             <div class="panel panel-default">
             <div class="panel-body">
-                <p>{{ resume.desiredJob }}</p><br>
-                <p>Domaine d'activités : {{ resume.professionnalDomain }}</p>
-                <p>Type de contrat recherché : {{ resume.contractType }}</p>
-                <p>Années d'expérience : {{ resume.yearOfExperience }}</p>
-                <p>Last Job : {{ resume.jobName }}</p>
-                <p>Last Diploma : {{ resume.name }}</p>
-                <a href="{{ path('company_show_resume', {reference : resume.reference }) }}" class="btn btn-default" target="_blank">Consulter <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>  <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon {% if resume.favorite is null %}glyphicon-star-empty{% else %}glyphicon-star{% endif %}" aria-hidden="true"></span></button>
-
+                <h3>{{ resume.desiredJob }}</h3>
+                <div class="col-md-6 col-sm-6">
+                <ul>
+                    <li>Domaine d'activité : {{ resume.professionnalDomain }}</li>
+                    <li>Type de contrat recherché : {{ resume.contractType }}</li>
+                </ul>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                <ul>
+                    <li>Dernier emploi : {{ resume.jobName }}</li>
+                    <li>Dernier diplôme : {{ resume.name }}</li>
+                </ul>
+                </div>
+                <a href="{{ path('company_show_resume', {reference : resume.reference }) }}" class="btn btn-default" target="_blank">Consulter <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon {% if resume.favorite is null %}glyphicon-star-empty{% else %}glyphicon-star{% endif %}" aria-hidden="true"></span></button>
             </div>
           </div>
-            <br>
+            
+        <br>
         
         {% endfor %}
     {% endif %}

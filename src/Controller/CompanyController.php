@@ -18,15 +18,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class CompanyController extends ControllerAbstract{
     
     public function indexAction(){
-        
-        $idCompany = $this->session->get('company')->getId();
-        
-        $dbTokens = $this->app['company.repository']->nbOfTokens($idCompany);
+                
+        $email =  $this->session->get('company')->getEmail();
+        $company = $this->app['company.repository']->findByEmail($email);
+      
                       
         return $this->render(
                 'company/espace_recruteur.html.twig',
                 [
-                    'tokens' => $dbTokens
+                    'company' => $company
                 ]);
 
 
@@ -56,6 +56,8 @@ class CompanyController extends ControllerAbstract{
                 ->setCountry($_POST['country'])
                 ->setActivityArea($_POST['activity_area'])
                 ->setEmployesNb($_POST['employes_nb'])
+                ->setNbOfTokens(0)
+                ->setRole('company')
         ;
             
           
@@ -195,7 +197,7 @@ class CompanyController extends ControllerAbstract{
     {
         $this->app['company.manager']->logout();
 
-        return $this->redirectRoute('homepage'); // VERIFIER LE NOM DE LA ROUTE A LA FIN ///////////////////////////////
+        return $this->redirectRoute('homepage');
 
     }
     
@@ -425,9 +427,11 @@ class CompanyController extends ControllerAbstract{
                        
         if ($idFavorite == ""){
             $this->app['favorite.repository']->save($favorite);
+            
             return 'Ajout';
         } else {
             $this->app['favorite.repository']->delete($idFavorite);
+            
             return 'Suppression';
         }
 
@@ -439,39 +443,37 @@ class CompanyController extends ControllerAbstract{
         
         $companyId = $company->getId(); 
         
-        
         if ($this->app['company.repository']->nbOfTokens($companyId) == 0){
             return 'error';
-        }else{
-               
-        // Insère l'id company et l'id resume dans table command
-        $command = new Command();
-        
-        $company = $this->session->get('company');  
-        $resume = $this->app['resume.repository']->find($resumeId);
-        
-        $command
-            ->setCompany($company)
-            ->setResume($resume)
-        ;
-        
-        $this->app['command.repository']->save($command);
-        
-        // Retire un jeton dans le champs nb_of_tokens de l'entreprise connectée
-        $companyId = $company->getId(); 
-        
-        $newNbOfTokens = $this->app['company.repository']->nbOfTokens($companyId) - 1;
-        
-        $company
-            ->setId($companyId)
-            ->setNbOfTokens($newNbOfTokens);
-        
-        $this->app['company.repository']->save($company);
-        
-        $user = $this->app['user.repository']->findByResume($resumeId);
-        
-        return new JsonResponse($user->toArray());
-        
+        }
+        else{
+            // Insère l'id company et l'id resume dans table command
+            $command = new Command();
+
+            $company = $this->session->get('company');  
+            $resume = $this->app['resume.repository']->find($resumeId);
+
+            $command
+                ->setCompany($company)
+                ->setResume($resume)
+            ;
+
+            $this->app['command.repository']->save($command);
+
+            // Retire un jeton dans le champs nb_of_tokens de l'entreprise connectée
+            $companyId = $company->getId(); 
+
+            $newNbOfTokens = $this->app['company.repository']->nbOfTokens($companyId) - 1;
+
+            $company
+                ->setId($companyId)
+                ->setNbOfTokens($newNbOfTokens);
+
+            $this->app['company.repository']->save($company);
+
+            $user = $this->app['user.repository']->findByResume($resumeId);
+
+            return new JsonResponse($user->toArray());
         }
     }
 }

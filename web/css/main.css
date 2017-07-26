@@ -133,7 +133,7 @@ hr{
   clear: both;
   max-height: 0;
   transition: max-height .2s ease-out;
-    background: rgba(0,0,0,1);
+background: rgba(0,0,0,1);
 }
 /* menu icon */
 .header .menu-icon {
@@ -253,7 +253,7 @@ hr{
 
 /*---------------- CONTAINER ----------------*/
 .container{
-    margin: 60px auto;
+    margin: 40px auto;
 }
 
 .container hr{
@@ -290,6 +290,13 @@ hr{
     background: #157a5d;
 }
 
+.btn-submit-recherche{
+    display: inline;
+    height: 40px;
+    margin: 0 auto;
+    background: #157a5d;
+}
+
 .container form .btn-annuler{
     width: 80px;
     background: #ccc;
@@ -299,6 +306,10 @@ hr{
 
 .container form .red-star{
     color: red;
+}
+
+.form-check-label a{
+    color: #29aa88;
 }
 
 /* RESPONSIVE FORMULAIRES */
@@ -334,6 +345,15 @@ i {
     border-radius: 10px;
     text-align: center;
 }
+
+/* RESPONSIVE BOX ACCUEIL */
+@media screen and (max-width: 1024px) {
+    .box-accueil {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
 /*LINK 'a' NEWS BOX*/
 .box-accueil li a{
     color: #fff;
@@ -482,6 +502,10 @@ footer a:hover{
     color: #fff;
 }
 
+.modal-footer{
+    text-align: center;
+}
+
 .box-resume a {
     font-size: 1.7rem;
 }
@@ -511,7 +535,7 @@ footer a:hover{
     z-index: 1;
 }
 
-.box-resume .box-header-company button{
+.box-resume .box-header-company .btn-reveal-cv{
     position: absolute;
     top: -171px;
     left: 0;
@@ -636,9 +660,10 @@ footer a:hover{
 }
 .box-principale img{
 	display: block;
-        max-width: 70%;
+/*        max-width: 70%;*/
+        width: 50px;
 	border-radius: 70%;
-        margin-left: 35px;
+/*        margin-left: 35px;*/
 }
 .box-principale figcaption{
 	text-align: center;
@@ -757,7 +782,6 @@ footer a:hover{
 	.form-contact textarea{
 		width: 300Px;
 	}
-
 }
 
 
@@ -775,7 +799,7 @@ footer a:hover{
 }
 .recruteur_token, .underlined{
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-top: 30px;
     height: 45%;
     
@@ -894,4 +918,21 @@ footer a:hover{
     font-size: 1.2em;
     color: blue;
     text-decoration: underline;
+}
+
+/*--------------------------PAGE RECHERCHE_CV.HTML--------*/
+
+.panel{
+    width: 700px;
+    margin: 0 auto;
+    font-size: 1.7rem;
+    padding: 10px;
+}
+
+.panel h3{
+    border-bottom: 1px solid #5cc2a9;
+    padding-bottom: 5px;
+}
+.panel ul{
+    margin: 20px 0;
 }

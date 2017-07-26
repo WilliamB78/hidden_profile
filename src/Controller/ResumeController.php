@@ -68,98 +68,7 @@ class ResumeController extends ControllerAbstract
             $nb_of_studies = count($_POST['nb_of_studies']);
             $nb_of_languages = count($_POST['nb_of_languages']);
             
-            // new security manager object to clean $_POST values (XSS)
-            $this->app['security.manager']->sanitizePost();
             
-            // Vérifications des erreurs :
-            
-            // Vérification des champs de la table 'resume'
-            if(empty($_POST['professionnal_domain']))
-            {
-                $errors['professionnal_domain'] = 'Le domaine professionnel est obligatoire !';
-            }
-                        
-            if(empty($_POST['desired_job']))
-            {
-                $errors['desired_job'] = 'Le poste recherché est obligatoire !';
-            }
-                        
-            if(empty($_POST['contract_type']))
-            {
-                $errors['contract_type'] = 'Le type de contrat est obligatoire !';
-            }
-                        
-            if(empty($_POST['contract_type']))
-            {
-                $errors['hobbies'] = 'Le type de contrat est obligatoire !';
-            }
-            
-            // Vérification des champs de la table 'experience'
-            for($i = 0; $i < $nb_of_experiences; $i++)
-            {
-                if(empty($_POST['job_name'][$i]))
-                {
-                    $errors['job_name'] = 'Le nom du poste n°' . ($i+1) . ' est obligatoire !';
-                }         
-
-                if(empty($_POST['companies'][$i]))
-                {
-                    $errors['companies'] = 'Les sociétés n°' . ($i+1) . ' sont obligatoires !';
-                }         
-
-                if(empty($_POST['year_of_experience'][$i]))
-                {
-                    $errors['year_of_experience'] = 'Le nombre d\'années d\'expérience pour le poste n°' . ($i+1) . ' obligatoire !';
-                }
-
-                if(empty($_POST['description'][$i]))
-                {
-                    $errors['description'] = 'Les responsabilités pour le poste n°' . ($i+1) . '  sont obligatoires !';
-                }   
-            }
-  
-            // Vérifications des champs de la table 'study'
-            for($i = 0; $i < $nb_of_studies; $i++)
-            {
-                if(empty($_POST['name'][$i]))
-                {
-                    $errors['name'] = 'Le nom de la formation est obligatoire !';
-                } 
-                        
-                if(empty($_POST['level'][$i]))
-                {
-                    $errors['level'] = 'Le niveau de la formation est obligatoire !';
-                }
-            }
-            
-            // Vérifications des champs de la table 'skill'
-            if(empty($_POST['skills']))
-            {
-                $errors['skills'] = 'Le champs "compétences" est obligatoire !';
-            } 
-                        
-            if(empty($_POST['informatique']))
-            {
-                $errors['informatique'] = 'Le champs "informatique" est obligatoire !';
-            }
-            
-            // Vérifications des champs de la table 'language'
-            for($i = 0; $i < $nb_of_languages; $i++)
-            {
-                if(empty($_POST['language_select'][$i]))
-                {
-                    $errors['language_select'] = 'La sélection d\'un langage est obligatoire !';
-                }      
-
-                if(empty($_POST['language_level'][$i]))
-                {
-                    $errors['language_level'] = 'La sélection d\'un niveau du langage est obligatoire !';
-                }  
-            }
-            
-            // S'il n'y a pas d'erreurs...
-            if(empty($errors))
-            {
                 // On définit les SETTERS de chaque entités (Resume, Experience, Study et Skill) :
                 
                 if(isset($resumeId))
@@ -221,6 +130,99 @@ class ResumeController extends ControllerAbstract
                     ->setLanguageLevel($_POST['language_level'])
                     ->setUser($this->app['user.manager']->getUser()) // Récupération des informations (en session) de l'utilisateur connecté
                 ;  
+            
+            // new security manager object to clean $_POST values (XSS)
+            $this->app['security.manager']->sanitizePost();
+            
+            // Vérifications des erreurs :
+            
+            // Vérification des champs de la table 'resume'
+            if(empty($_POST['professionnal_domain']))
+//            {
+//                $errors['professionnal_domain'] = 'Le domaine professionnel est obligatoire !';
+//            }
+//                        
+//            if(empty($_POST['desired_job']))
+//            {
+//                $errors['desired_job'] = 'Le poste recherché est obligatoire !';
+//            }
+//                        
+//            if(empty($_POST['contract_type']))
+//            {
+//                $errors['contract_type'] = 'Le type de contrat est obligatoire !';
+//            }
+//                        
+//            if(empty($_POST['contract_type']))
+//            {
+//                $errors['hobbies'] = 'Le type de contrat est obligatoire !';
+//            }
+            
+            // Vérification des champs de la table 'experience'
+//            for($i = 0; $i < $nb_of_experiences; $i++)
+//            {
+//                if(empty($_POST['job_name'][$i]))
+//                {
+//                    $errors['job_name'] = 'Le nom du poste n°' . ($i+1) . ' est obligatoire !';
+//                }         
+//
+//                if(empty($_POST['companies'][$i]))
+//                {
+//                    $errors['companies'] = 'Les sociétés n°' . ($i+1) . ' sont obligatoires !';
+//                }         
+//
+//                if(empty($_POST['year_of_experience'][$i]))
+//                {
+//                    $errors['year_of_experience'] = 'Le nombre d\'années d\'expérience pour le poste n°' . ($i+1) . ' obligatoire !';
+//                }
+//
+//                if(empty($_POST['description'][$i]))
+//                {
+//                    $errors['description'] = 'Les responsabilités pour le poste n°' . ($i+1) . '  sont obligatoires !';
+//                }   
+//            }
+  
+            // Vérifications des champs de la table 'study'
+//            for($i = 0; $i < $nb_of_studies; $i++)
+//            {
+//                if(empty($_POST['name'][$i]))
+//                {
+//                    $errors['name'] = 'Le nom de la formation est obligatoire !';
+//                } 
+//                        
+//                if(empty($_POST['level'][$i]))
+//                {
+//                    $errors['level'] = 'Le niveau de la formation est obligatoire !';
+//                }
+//            }
+            
+            // Vérifications des champs de la table 'skill'
+//            if(empty($_POST['skills']))
+//            {
+//                $errors['skills'] = 'Le champs "compétences" est obligatoire !';
+//            } 
+//                        
+//            if(empty($_POST['informatique']))
+//            {
+//                $errors['informatique'] = 'Le champs "informatique" est obligatoire !';
+//            }
+            
+            // Vérifications des champs de la table 'language'
+//            for($i = 0; $i < $nb_of_languages; $i++)
+//            {
+//                if(empty($_POST['language_select'][$i]))
+//                {
+//                    $errors['language_select'] = 'La sélection d\'un langage est obligatoire !';
+//                }      
+//
+//                if(empty($_POST['language_level'][$i]))
+//                {
+//                    $errors['language_level'] = 'La sélection d\'un niveau du langage est obligatoire !';
+//                }  
+//            }
+            
+            // S'il n'y a pas d'erreurs...
+            if(empty($errors))
+            {
                 
                 $this->app['resume.repository']->save($resume);
                 $this->app['experience.repository']->save($experiences, $nb_of_experiences);
@@ -237,6 +239,20 @@ class ResumeController extends ControllerAbstract
                 $message = '<b>Le formulaire contient des erreurs</b>';
                 $message .= '<br>' . implode('<br>', $errors);
                 $this->addFlashMessage($message, 'error');
+                
+                //var_dump($resume);die;
+                
+                return $this->render(
+                'resume/edit.html.twig',
+                [
+                    'resume' => $resume,
+                    'experiences' => $experiences,
+                    'studies' => $studies,
+                    'skills' => $skills,
+                    'languages' => $languages,
+                    'post' => $_POST
+                ]
+            );
             }
         }
         
