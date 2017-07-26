@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Admin - Modification de commande' %}
+
+{% block content %}
+    <h1>
+       
+        Modifier la commande
+    </h1>
+    <form method="post">
+        <div class="form-group">
+            <label>Montant</label>
+            <input type="text" name="amount" value="{{ order.amount }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Nombre de jeton</label>
+            <input type="text" name="nb_of_tokens" value="{{ order.nb_of_tokens }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <input type="text" name="status" value="{{ order.status }}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">
+            Enregistrer
+        </button>
+        <a href="{{ path('admin') }}" class="btn btn-default">
+            Annuler
+        </a>
+    </form>
+{% endblock %}

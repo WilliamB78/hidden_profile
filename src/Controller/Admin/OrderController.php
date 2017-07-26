@@ -24,4 +24,30 @@ class OrderController extends ControllerAbstract {
         
         return $this->render('admin/gestion_commandes.html.twig', ['orders' => $orders]);
     }
+    
+    public function editAction($id = null)
+    {
+        if (!is_null($id)) { // modification
+            $order = $this->app['order.repository']->find($id);
+        } 
+
+
+        if (!empty($_POST)) {
+
+            $order
+                    ->setAmount($_POST['amount'])
+                    ->setNbOfTokens($_POST['nb_of_tokens'])
+                    ->setStatus($_POST['status'])
+                    ;
+
+          
+        }
+
+        return $this->render(
+            'admin/edit_commandes.html.twig',
+            [
+                'order' => $order
+            ]
+        );
+    }
 }

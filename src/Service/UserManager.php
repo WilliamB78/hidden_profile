@@ -90,4 +90,9 @@ class UserManager
     {
         return $this->session->has('user') && $this->session->get('user')->isUser();
     }
+    
+    public function isAdmin()
+    {
+        return $this->session->has('user') && $this->session->get('user')->isAdmin();
+    }
 }

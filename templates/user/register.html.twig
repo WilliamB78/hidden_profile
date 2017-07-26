@@ -9,32 +9,32 @@
         <br>
         <div class="form-group">
             <label for="lastname">Nom <span class="red-star">*</span></label>
-            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Votre nom">
+            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Votre nom" value="{% if post is not empty %}{{ post.lastname }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label for="firstname">Prénom <span class="red-star">*</span></label>
-            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Votre prénom">
+            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Votre prénom" value="{% if post is not empty %}{{ post.firstname }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label for="postcode">Code postal <span class="red-star">*</span></label>
-            <input type="text" name="postcode" class="form-control" id="codepost" placeholder="Votre code postal">
+            <input type="text" name="postcode" class="form-control" id="codepost" placeholder="Votre code postal" value="{% if post is not empty %}{{ post.postcode }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label for="telephone">Téléphone <span class="red-star">*</span></label>
-            <input type="text" name="telephone" class="form-control" id="telephone">
+            <input type="text" name="telephone" class="form-control" id="telephone" value="{% if post is not empty %}{{ post.telephone }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label for="email">Email <span class="red-star">*</span></label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="votre email">
+            <input type="email" class="form-control" name="email" id="email" placeholder="votre email" value="{% if post is not empty %}{{ post.email }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label for="email_confirm">Confirmation de l'email <span class="red-star">*</span></label>
-            <input type="email" class="form-control" name="email_confirm" id="email_confirm" placeholder="Confirmer votre email">
+            <input type="email" class="form-control" name="email_confirm" id="email_confirm" placeholder="Confirmer votre email" value="{% if post is not empty %}{{ post.email_confirm }}{% endif %}">
         </div>
 
         <div class="form-group">
