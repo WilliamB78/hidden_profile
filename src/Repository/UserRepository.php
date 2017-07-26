@@ -117,7 +117,7 @@ EOS;
     
     public function findIdResumeByReference($reference)
     {
-        $result = $this->db->fetchColumn('SELECT id FROM resume WHERE reference = :reference', [':reference' => $reference]);
+        $result = $this->db->fetchAssoc('SELECT id, desired_jobs FROM resume WHERE reference = :reference', [':reference' => $reference]);
         
         return $result;
         

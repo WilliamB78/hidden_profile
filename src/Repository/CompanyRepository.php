@@ -97,9 +97,9 @@ class CompanyRepository extends RepositoryAbstract
             return $dbTokens;
     }
         
-    public function saveTokens(Company $company, $nbOfTokens)
+    public function saveTokens(Company $company)
     {
-        $data = ['nb_of_tokens' => $nbOfTokens];
+        $data = ['nb_of_tokens' => $company->getNbOfTokens() + $this->nbOfTokens($company->getId())];
         
         $where = ['id' => $company->getId()];
                 

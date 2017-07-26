@@ -21,7 +21,40 @@ class Favorite {
     
     private $idCompany;
     
+    private $reference;
+    
+    private $date;
+    
+    private $job;
+    
+    public function getJob() {
+        return $this->job;
+    }
 
+    public function setJob($job) {
+        $this->job = $job;
+        return $this;
+    }
+
+        
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function setDate($date) {
+        $this->date = $date;
+        return $this;
+    }
+
+        
+    public function getReference() {
+        return $this->reference;
+    }
+
+    public function setReference($reference) {
+        $this->reference = $reference;
+        return $this;
+    }
     
     public function getIdResume() {
         return $this->idResume;

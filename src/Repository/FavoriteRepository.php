@@ -26,7 +26,9 @@ class FavoriteRepository extends RepositoryAbstract {
     {
         $data = [
             'id_company' => $favorite->getIdCompany(),
-            'id_resume' => $favorite->getIdResume()
+            'id_resume' => $favorite->getIdResume(),
+            'reference' => $favorite->getReference(),
+            'desired_job' => $favorite->getJob()
         ];
         
          $where = !empty($favorite->getId())
@@ -52,6 +54,9 @@ class FavoriteRepository extends RepositoryAbstract {
                 ->setId($dbFavorite['id'])
                 ->setIdCompany($dbFavorite['id_company'])
                 ->setIdResume($dbFavorite['id_resume'])
+                ->setReference($dbFavorite['reference'])
+                ->setDate($dbFavorite['date'])
+                ->setJob($dbFavorite['desired_job'])
         ;
 
         return $favorite;
