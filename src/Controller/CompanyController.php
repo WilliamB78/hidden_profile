@@ -2,10 +2,11 @@
 
 namespace Controller;
 
+use Entity\Command;
 use Entity\Company;
 use Entity\Favorite;
 use Entity\Order;
-use Service\SecurityManager;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -363,9 +364,18 @@ class CompanyController extends ControllerAbstract{
     
     public function showResumeAction($reference)
     {
-        $resume = $this->app['resume.repository']->findByRef($reference);
+        $idCompany = $this->session->get('company')->getId();
         
+        $resume = $this->app['resume.repository']->findByRef($reference);
+        $idResume =  $resume->getId();
         $userId = $resume->getUserId();
+        
+        $command = $this->app['command.repository']->findCommandByIdCompanyAndIdResume($idCompany, $idResume);
+        $user = '';
+        if(!is_null($command))
+        {
+            $user = $this->app['user.repository']->find($userId);
+        }
         
         $resume = $this->app['resume.repository']->findByUser($userId);
         $experiences = $this->app['experience.repository']->findByUser($userId);
@@ -380,7 +390,8 @@ class CompanyController extends ControllerAbstract{
                 'experiences' => $experiences,
                 'studies' => $studies,
                 'skills' => $skills,
-                'languages' => $languages
+                'languages' => $languages,
+                'user' => $user
             ]
         );
     }
@@ -409,5 +420,36 @@ class CompanyController extends ControllerAbstract{
          $this->app['favorite.repository']->save($favorite);
          
          return 'Ok';
+    }
+    
+    public function revealResumeAction($resumeId)
+    {
+        // Insère l'id company et l'id resume dans table command
+        $command = new Command();
+        
+        $company = $this->session->get('company');  
+        $resume = $this->app['resume.repository']->find($resumeId);
+        
+        $command
+            ->setCompany($company)
+            ->setResume($resume)
+        ;
+        
+        $this->app['command.repository']->save($command);
+        
+        // Retire un jeton dans le champs nb_of_tokens de l'entreprise connectée
+        $companyId = $company->getId(); 
+        
+        $newNbOfTokens = $this->app['company.repository']->nbOfTokens($companyId) - 1;
+        
+        $company
+            ->setId($companyId)
+            ->setNbOfTokens($newNbOfTokens);
+        
+        $this->app['company.repository']->save($company);
+        
+        $user = $this->app['user.repository']->findByResume($resumeId);
+        
+        return new JsonResponse($user->toArray());
     }
 }

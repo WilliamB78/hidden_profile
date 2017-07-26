@@ -68,8 +68,8 @@ EOS;
         
         $command 
             ->setId($dbCommand['id'])
-            ->setCompanyId($company)
-            ->setResumeId($resume)
+            ->setCompany($company)
+            ->setResume($resume)
         ;
         
         return $command;
@@ -91,5 +91,20 @@ EOS;
         ;
 
         $this->persist($data, $where);
+    }
+    
+    public function findCommandByIdCompanyAndIdResume($idCompany, $idResume)
+    {
+        $dbCommand = $this->db->fetchAssoc(
+                'SELECT * FROM command WHERE company_id = :idCompany AND resume_id = :idResume',
+                [':idCompany' => $idCompany, ':idResume' => $idResume]
+        );
+        
+        if(!empty($dbCommand))
+        {
+            return $this->buildFromArray($dbCommand);
+        }
+       
+        return null;
     }
 }

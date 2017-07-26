@@ -481,20 +481,30 @@ footer a:hover{
 
 .box-resume .box-header-company{
     position: relative;
-    background: url(../img/bigLogo.png) no-repeat; 
+/*    background: url(../img/bigLogo.png) no-repeat; */
     background-size: cover;   
     margin: 0;
     padding: 0;
-    height: 270px;
+    height: 295px;
 }
 
-.box-resume .box-header-company a{
+.box-resume .box-header-company img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: auto;
+    z-index: 1;
+}
+
+.box-resume .box-header-company button{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     margin: 0;
     border-radius: 0;
+    z-index: 2;
 }
 .container .trait-bleu{
     height: 2px;

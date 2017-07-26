@@ -7,8 +7,8 @@
         <hr class="trait-bleu">
         <ul>
             <li><em>Domaine professionnel</em> :  {{ resume.professionnalDomain }}</li>
-            <li><em>M&eacute;tier recherch&eacute;</em> : {{ resume.desiredJob }}</li>
-            <li><em>Type de contrat recherch&eacute;</em> : {{ resume.contractType }}</li>
+            <li><em>M&eacute;tier recherch&eacute;</em> : <strong>{{ resume.desiredJob|upper }}</strong></li>
+            <li><em>Type de contrat recherch&eacute;</em> : {{ resume.contractType|upper }}</li>
         </ul>
     </div>
 </div>

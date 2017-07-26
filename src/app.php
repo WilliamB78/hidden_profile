@@ -5,6 +5,7 @@ use Controller\CompanyController;
 use Controller\OrderController;
 use Controller\ResumeController;
 use Controller\UserController;
+use Repository\CommandRepository;
 use Repository\CompanyRepository;
 use Repository\LanguageRepository;
 use Repository\ExperienceRepository;

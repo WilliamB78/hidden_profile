@@ -172,6 +172,14 @@ $company
     ->bind('company_add_favorite')
 ;
 
+//route pour débloquer un cv
+$company
+    ->post('/reveler_cv/{resumeId}', 'company.controller:revealResumeAction')
+    ->bind('company_reveal_resume')
+;
+
+
+
 // ---------------------- Admin Dashboard ---------------------------------
 
 $app
