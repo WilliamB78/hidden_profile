@@ -57,6 +57,28 @@ EOS;
         return null;
     }
     
+    public function findByResume($id)
+    {
+        $query = <<<EOS
+SELECT *
+FROM user u
+JOIN resume r ON r.user_id = u.id
+WHERE r.id = :id
+EOS;
+        
+        $dbUser = $this->db->fetchAssoc(
+            $query,
+            [':id' => $id]
+        );
+        
+        if(!empty($dbUser))
+        {
+            return $this->buildFromArray($dbUser);
+        }
+        
+        return null;
+    }
+    
       public function findByEmail($email)
     {
         $dbUser = $this->db->fetchAssoc(

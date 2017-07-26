@@ -221,4 +221,16 @@ class User
     {
         return $this->role == 'admin';
     }
+    
+    public function toArray()
+    {
+        return [
+           'id' => $this->id,
+           'firstname' => $this->firstname,
+           'lastname' => $this->lastname ,
+           'email' => $this->email ,
+           'telephone' => $this->telephone ,
+           'postcode' => $this->postcode 
+        ];
+    }
 }
