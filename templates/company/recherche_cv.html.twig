@@ -98,9 +98,9 @@
                 e.preventDefault();
                 let ref = $(this).attr('reference');
                 let url = "ajout_favori/" + ref;
-                console.log(ref);
                 $.post(url, function (response){
-                $('#star' + ref).css('color', 'orange');
+                $('#star' + ref).toggleClass('glyphicon-star-empty').toggleClass('glyphicon-star');
+                console.log(response);
               });
             });
     

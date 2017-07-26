@@ -396,18 +396,27 @@ class CompanyController extends ControllerAbstract{
     
     public function addFavoriteResumeAction($reference)
     {
+               
         $favorite = new Favorite();
         
         $idCompany = $this->session->get('company')->getId();
         
-        $dbResult = $this->app['user.repository']->findIdResumeByReference($reference);
+        $idResume = $this->app['user.repository']->findIdResumeByReference($reference);
              
         $favorite
-                ->setIdResume($dbResult)
+                ->setIdResume($idResume)
                 ->setIdCompany($idCompany)
-                ->setReference($reference);
-         $this->app['favorite.repository']->save($favorite);
-         
-         return 'Ok';
+                ;
+        
+        $idFavorite = $this->app['favorite.repository']->findByIdCompanyAndIdResume($idCompany, $idResume);
+                       
+        if ($idFavorite == ""){
+            $this->app['favorite.repository']->save($favorite);
+            return 'Ajout';
+        } else {
+            $this->app['favorite.repository']->delete($idFavorite);
+            return 'Suppression';
+        }
+
     }
 }

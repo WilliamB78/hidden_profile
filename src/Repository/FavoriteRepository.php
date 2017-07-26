@@ -26,8 +26,7 @@ class FavoriteRepository extends RepositoryAbstract {
     {
         $data = [
             'id_company' => $favorite->getIdCompany(),
-            'id_resume' => $favorite->getIdResume(),
-            'reference' => $favorite->getReference()
+            'id_resume' => $favorite->getIdResume()
         ];
         
          $where = !empty($favorite->getId())
@@ -38,9 +37,11 @@ class FavoriteRepository extends RepositoryAbstract {
         $this->persist($data, $where);
     }
     
-    public function delete()
+    public function delete($id)
     {
+        $this->db->delete('favorites', array('id' => $id));
         
+        return 'Row deleted';
     }
     
     public function buildFromArray(array $dbFavorite)
@@ -50,7 +51,6 @@ class FavoriteRepository extends RepositoryAbstract {
         $favorite
                 ->setId($dbFavorite['id'])
                 ->setIdCompany($dbFavorite['id_company'])
-                ->setReference($dbFavorite['reference'])
                 ->setIdResume($dbFavorite['id_resume'])
         ;
 
@@ -73,6 +73,18 @@ class FavoriteRepository extends RepositoryAbstract {
         
         return $favoris;
        
+    }
+    
+    public function findByIdCompanyAndIdResume($idCompany, $idResume)
+    {
+        $result = $this->db->fetchColumn(
+                'SELECT id FROM favorites WHERE id_company = :idCompany AND id_resume = :idResume',
+                [
+                    'idCompany' => $idCompany,
+                    'idResume' => $idResume
+                ]);
+        
+        return $result;
     }
     
 }

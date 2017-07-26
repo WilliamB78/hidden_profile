@@ -16,57 +16,57 @@
 
         <div class="form-group">
           <label>Adresse de l'entreprise <span class="red-star">*</span></label>
-          <input type="text" class="form-control" name="address" id="adresseEntreprise" value="{% if post is not empty %}{{ post.address }}{% endif %}>  
+          <input type="text" class="form-control" name="address" id="adresseEntreprise" value="{% if post is not empty %}{{ post.address }}{% endif %}">  
         </div>
 
         <div class="form-group">
             <labeL>Ville <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="city" id="ville" placeholder="Paris" value="{% if post is not empty %}{{ post.city }}{% endif %}>
+            <input type="text" class="form-control" name="city" id="ville" value="{% if post is not empty %}{{ post.city }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Code postal <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="postcode" id="postcode" value="{% if post is not empty %}{{ post.postcode }}{% endif %}>    
+            <input type="text" class="form-control" name="postcode" id="postcode" value="{% if post is not empty %}{{ post.postcode }}{% endif %}">    
         </div>
 
         <div class="form-group">
             <label>Pays <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="country" id="pays" value="{% if post is not empty %}{{ post.country }}{% endif %}>
+            <input type="text" class="form-control" name="country" id="pays" value="{% if post is not empty %}{{ post.country }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Téléphone professionnel <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="telephone" id="telProfessionnel" value="{% if post is not empty %}{{ post.telephone }}{% endif %}>    
+            <input type="text" class="form-control" name="telephone" id="telProfessionnel" value="{% if post is not empty %}{{ post.telephone }}{% endif %}">    
         </div>
 
         <div class="form-group">
             <label>Numéro SIRET <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="siret" id="numeroSiret" value="{% if post is not empty %}{{ post.siret }}{% endif %}>    
+            <input type="text" class="form-control" name="siret" id="numeroSiret" value="{% if post is not empty %}{{ post.siret }}{% endif %}">    
         </div>
 
         <div class="form-group">
             <label>Numéro TVA <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="tva_nb" id="tva_nb" value="{% if post is not empty %}{{ post.tva_nb }}{% endif %}>
+            <input type="text" class="form-control" name="tva_nb" id="tva_nb" value="{% if post is not empty %}{{ post.tva_nb }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Secteur d'activité <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="activity_area" id="SecteurActivite" value="{% if post is not empty %}{{ post.activity_area }}{% endif %}>
+            <input type="text" class="form-control" name="activity_area" id="SecteurActivite" value="{% if post is not empty %}{{ post.activity_area }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Effectif <span class="red-star">*</span></label>
-            <input type="text" class="form-control" name="employes_nb" id="effectif" value="{% if post is not empty %}{{ post.employes_nb }}{% endif %}>
+            <input type="text" class="form-control" name="employes_nb" id="effectif" value="{% if post is not empty %}{{ post.employes_nb }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Email <span class="red-star">*</span></label>
-            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{% if post is not empty %}{{ post.email }}{% endif %}>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{% if post is not empty %}{{ post.email }}{% endif %}">
         </div>
 
         <div class="form-group">
             <label>Confirmation de l'email <span class="red-star">*</span></label>
-            <input type="email" class="form-control" name="email_confirm" id="email_confirm" aria-describedby="emailHelp" value="{% if post is not empty %}{{ post.email_confirm }}{% endif %}>
+            <input type="email" class="form-control" name="email_confirm" id="email_confirm" aria-describedby="emailHelp" value="{% if post is not empty %}{{ post.email_confirm }}{% endif %}">
         </div>
 
         <div class="form-group">
