@@ -20,15 +20,46 @@
         {% if user is empty %}   
         <div id="box-buttons">
             <div class="col-md-6">
-                <button class="btn btn-default reveal-btn" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>
+                {#<button class="btn btn-default reveal-btn" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>#}
+                
+                   <button type="button" class="btn btn-primary btn-reveal-cv" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>
+                    
+                       {# <button class="btn btn-default reveal-btn" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Valider</button>#}
             </div>
             <div class="col-md-6">
-                <button class="btn btn-default"><i class="fa fa-star-o" aria-hidden="true"></i> Ajouter ce CV à vos favoris</button>
+               {# <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon {% if resume.favorite is null %}glyphicon-star-empty{% else %}glyphicon-star{% endif %}" aria-hidden="true"></span></button>#}
+                <button class="btn btn-default btn-reveal-cv"><i class="fa fa-star-o" aria-hidden="true"></i> Ajouter ce CV à vos favoris</button>
             </div>
             <img src="{{ asset('img/bigLogo.png') }}" alt=""/>
         </div>
         {% endif %}
     </div>
+    
+    <!-- Small modal -->
+
+{#    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <p>Débloquer ce CV (1 jeton) :</p>
+            <button class="btn btn-default reveal-btn" data-dismiss="modal" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Valider</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>#}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Débloquer ce CV (1 jeton) :</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default reveal-btn" data-dismiss="modal" reference="{{ resume.id }}">Valider</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
     
     {# Rendu du CV #}
     {% include 'resume/resume_display.html.twig' %} {# Inclusion du fichier de l'affichage standard du CV #}
@@ -43,7 +74,6 @@
         
         $(function(){
            //alert('ok');
-           //$('#header-box').hide();
             $('.reveal-btn').click(function(e){
                 e.preventDefault();
                 let resumeId = $(this).attr('reference');
@@ -51,17 +81,17 @@
                 //let url = "reveler_cv/" + resumeId;
                 $.post(url, function (response){
                     if (response != "error"){
-                    console.log(response);
-                    $('#header-box').show();
-                    $('#box-buttons').fadeOut(400);
-                    
-                    $('#span-firstname').text(response.firstname);
-                    $('#span-lastname').text(response.lastname);
-                    $('#span-email').text(response.email);
-                    $('#span-telephone').text(response.telephone);
-                    $('#span-postcode').text(response.postcode);
-                } else {
-                }
+                        console.log(response);
+                        $('#header-box').show();
+                        $('#box-buttons').fadeOut(400);
+                        $('.btn-reveal-cv').hide();
+
+                        $('#span-firstname').text(response.firstname);
+                        $('#span-lastname').text(response.lastname);
+                        $('#span-email').text(response.email);
+                        $('#span-telephone').text(response.telephone);
+                        $('#span-postcode').text(response.postcode);
+                    }
                 });
             });
     
