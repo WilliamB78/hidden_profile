@@ -1,1 +1,136 @@
 {# ---- AFFICHAGE STANDARD DU CV ---- #}
+
+<!-- BLOC CV -->
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="resume-title resume-title-cv"> CV - {{ resume.reference }}</h3>
+        <hr class="trait-bleu">
+        <ul>
+            <li><em>Domaine professionnel</em> :  {{ resume.professionnalDomain }}</li>
+            <li><em>M&eacute;tier recherch&eacute;</em> : {{ resume.desiredJob }}</li>
+            <li><em>Type de contrat recherch&eacute;</em> : {{ resume.contractType }}</li>
+        </ul>
+    </div>
+</div>
+
+<!-- BLOC EXPERIENCES PROFESSIONNELLES -->
+<div class="row">
+    <h3 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h3>
+
+    <hr class="trait-bleu">
+
+    {# Affiche toutes les expériences professionnelles de l'utilisateur #}
+    {% for experience in experiences %}
+        <div class="col-md-12">
+            <p><strong>{{ experience.jobName }}</strong> - {{ experience.yearOfExperience }} an(s) d'expérience</p>
+            <p><em>Entreprises</em> : {{ experience.companies }}</p>
+            <p><em>Responsabilit&eacute;s</em> :</p>
+
+            {% set descriptions = experience.description|split('-') %} {# On "découpe" la chaîne de caractère à partir des tirets. #}
+             {# La variable descriptions est un array. #}
+
+             {# On parcourt le tableau des descriptions avec une boucle for #}
+             {% for description in descriptions %}
+                 {% if not loop.first %} {# La première valeur du tableau est vide, on l'exclue donc avec if not loop.first #}
+                     <p>- {{ description }}</p>
+                 {% endif %}
+             {% endfor %}
+        </div>
+
+        {% if not loop.last %} {# Si c'est le dernier tour de la boucle, on n'affiche pas le trait gris. #}
+            <div class="col-md-12">
+                <hr class="trait-gris">
+            </div>
+        {% endif %}
+
+    {% endfor %}
+</div>	
+
+<!-- BLOC FORMATIONS -->
+<div class="row">
+    <h3 class="resume-title resume-title-formations"> FORMATIONS</h3>
+
+    <hr class="trait-bleu">
+
+    {# Affiche toutes les formations de l'utilisateur #}
+    {% for study in studies %}
+        <div class="col-md-4">
+            <ul>
+                <li><strong>{{ study.name }}</strong></li>
+            </ul>		
+        </div>
+        <div class="col-md-8">
+            <ul>
+                <li>{{ study.level }}</li>
+            </ul>
+        </div>
+
+        {% if not loop.last %} {# Si c'est le dernier tour de la boucle, on n'affiche pas le trait gris. #}
+            <div class="col-md-12">
+                <hr class="trait-gris">
+            </div>
+        {% endif %}
+
+    {% endfor %}
+</div>
+
+<!-- BLOC LANGUES + COMPETENCES -->
+<div class="row">                
+    <div class="col-md-6">
+        <h3 class="resume-title resume-title-competences"> COMPETENCES</h3>
+
+        <hr class="trait-bleu">
+
+        {% set skillsArray = skills.skills|split('-') %} {# On "découpe" la chaîne de caractère à partir des tirets. #}
+        {# La variable skillsArray est un array. #}
+
+        {# On parcourt le tableau des skills avec une boucle for #}
+        {% for skillAr in skillsArray %}
+            {% if not loop.first %} {# La première valeur du tableau est vide, on l'exclue donc avec if not loop.first #}
+                <p>- {{ skillAr }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="col-md-6">
+        <h3 class="resume-titleresume-title-langues"> LANGUES</h3>
+
+        <hr class="trait-bleu">
+
+        {# Affiche toutes les formations de l'utilisateur #}
+        {% for language in languages %}
+            <div class="col-md-12">
+                <ul>
+                    <li>Langue : {{ language.languageSelect }}</li>
+                </ul>
+                <ul>
+                    <li>Niveau : {{ language.languageLevel }}</li>
+                </ul>
+            </div>
+            {% if not loop.last %} {# Si c'est le dernier tour de la boucle, on n'affiche pas le trait gris. #}
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- BLOC CENTRES D'INTERET -->
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="resume-title resume-title-centres-interet"> CENTRES D'INTERET</h3>
+
+        <hr class="trait-bleu">
+
+        {% set hobbies = resume.hobbies|split('-') %} {# On "découpe" la chaîne de caractère à partir des tirets. #}
+        {# La variable hobbies est un array. #}
+
+        {# On parcourt le tableau des hobbies avec une boucle for #}
+        {% for hobby in hobbies %}
+            {% if not loop.first %} {# La première valeur du tableau est vide, on l'exclue donc avec if not loop.first #}
+                <p>- {{ hobby }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

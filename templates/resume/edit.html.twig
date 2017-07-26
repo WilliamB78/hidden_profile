@@ -9,7 +9,36 @@
         <label>Domaine professionnel</label>
         <select name="professionnal_domain" class="form-control">
             <option value="">Choisir le domaine professionnel</option>
+            <option value="administration" {% if resume.professionnalDomain == 'administration' %}selected{% endif %}>Administration</option>
+            <option value="banque" {% if resume.professionnalDomain == 'banque' %}selected{% endif %}>Banque</option>
+            <option value="Audit" {% if resume.professionnalDomain == 'audit' %}selected{% endif %}>Audit</option>
+            <option value="architecture" {% if resume.professionnalDomain == 'architecture' %}selected{% endif %}>Architecture</option>
+            <option value="btp" {% if resume.professionnalDomain == 'btp' %}selected{% endif %}>BTP</option>
+            <option value="commercial_vente" {% if resume.professionnalDomain == 'commercial vente' %}selected{% endif %}>Commercial-Vente</option>
+            <option value="communication" {% if resume.professionnalDomain == 'communication' %}selected{% endif %}>Communication</option>
+            <option value="comptabilite" {% if resume.professionnalDomain == 'comptabilite' %}selected{% endif %}>Comptabilité</option>
+            <option value="edition" {% if resume.professionnalDomain == 'edition' %}selected{% endif %}>Edition</option>
+            <option value="import_export" {% if resume.professionnalDomain == 'import export' %}selected{% endif %}>Import Export</option>
+            <option value="finance" {% if resume.professionnalDomain == 'finance' %}selected{% endif %}>Finance</option>
+            <option value="gestion" {% if resume.professionnalDomain == 'gestion' %}selected{% endif %}>Gestion</option>
+            <option value="informatique" {% if resume.professionnalDomain == 'grande distribution' %}selected{% endif %}>Grande distribution</option>
+            <option value="hotellerie" {% if resume.professionnalDomain == 'hotellerie' %}selected{% endif %}>Hotellerie</option>
             <option value="informatique" {% if resume.professionnalDomain == 'informatique' %}selected{% endif %}>Informatique</option>
+            <option value="immobilier" {% if resume.professionnalDomain == 'immobilier' %}selected{% endif %}>Immobilier</option>
+            <option value="ingenierie" {% if resume.professionnalDomain == 'ingenierie' %}selected{% endif %}>Ingénierie</option>
+            <option value="internet_ecommerce" {% if resume.professionnalDomain == 'internet_eCommerce' %}selected{% endif %}>Internet -e-Commerce</option>
+            <option value="juridique" {% if resume.professionnalDomain == 'juridique' %}selected{% endif %}>Juridique</option>
+            <option value="logistique" {% if resume.professionnalDomain == 'logistique' %}selected{% endif %}>Logistique</option>
+            <option value="marketing" {% if resume.professionnalDomain == 'marketing' %}selected{% endif %}>Marketing</option>
+            <option value="management" {% if resume.professionnalDomain == 'management' %}selected{% endif %}>Management</option>
+            <option value="qualite_inspection" {% if resume.professionnalDomain == 'qualite inspection' %}selected{% endif %}>Qualité-Inspection</option>
+            <option value="ressources_humaines" {% if resume.professionnalDomain == 'ressources_humaines' %}selected{% endif %}>Ressources humaines</option>
+            <option value="restauration" {% if resume.professionnalDomain == 'restauration' %}selected{% endif %}>Restauration</option>
+            <option value="sante" {% if resume.professionnalDomain == 'sante' %}selected{% endif %}>Santé</option>
+            <option value="securite" {% if resume.professionnalDomain == 'securite' %}selected{% endif %}>Sécurité</option>
+            <option value="service_clientele" {% if resume.professionnalDomain == 'service clientele' %}selected{% endif %}>Service clientèle</option>
+            <option value="tourisme" {% if resume.professionnalDomain == 'tourisme' %}selected{% endif %}>Tourisme</option>
+            <option value="telemarketing" {% if resume.professionnalDomain == 'telemarketing' %}selected{% endif %}>Télémarketing</option>
         </select>
 
         <br>
@@ -27,123 +56,147 @@
             <option value="stage" {% if resume.contractType == 'stage' %}selected{% endif %}>Stage</option>
         </select>
 
-        <h2 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h2>
+        <h2 class="resume-title resume-title-experiences inner-header"> EXPERIENCES PROFESSIONNELLES</h2>
+        
+        <div class="accordeon">
+            {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_experience pour chaque formation #}
+            {% for experience in experiences %}
+                <div class="bloc_experience">
+                    <input type="hidden" name="nb_of_experiences[]">
 
-        {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_experience pour chaque formation #}
-        {% for experience in experiences %}
-            <div class="bloc_experience">
-                <input type="hidden" name="nb_of_experiences[]">
+                    <label>Nom du poste</label>
+                    <input type="text" name="job_name[]" value="{{ experience.jobName }}" class="form-control" placeholder="Nom du poste">
 
-                <label>Nom du poste</label>
-                <input type="text" name="job_name[]" value="{{ experience.jobName }}" class="form-control" placeholder="Nom du poste">
+                    <br>
 
-                <br>
+                    <label>Société(s)</label>
+                    <input type="text" name="companies[]" value="{{ experience.companies }}" class="form-control" placeholder="Sociétés">
 
-                <label>Société(s)</label>
-                <input type="text" name="companies[]" value="{{ experience.companies }}" class="form-control" placeholder="Sociétés">
+                    <br>
 
-                <br>
+                    <label>Description de vos responsabilités</label>
+                    <textarea name="description[]" class="form-control" rows="3">{{ experience.description }}</textarea>
 
-                <label>Description de vos responsabilités</label>
-                <textarea name="description[]" class="form-control" rows="3">{{ experience.description }}</textarea>
+                    <br>
 
-                <br>
+                    <label>Nombre d'années</label>
+                    <select name="year_of_experience[]" class="form-control">
+                        <option value="">Choisir le niveau</option>
+                        <option value="inferieur_6mois" {% if experience.yearOfExperience == 'inferieur 6mois' %}selected{% endif %}>inférieur à 6 mois</option>
+                        <option value="6mois_12mois" {% if experience.yearOfExperience == '6mois-12mois' %}selected{% endif %}>6 mois à 12 mois</option>
+                        <option value="1ans_2ans" {% if experience.yearOfExperience == '1an-2ans' %}selected{% endif %}>1 an à 2 ans</option>
+                        <option value="3ans_5ans" {% if experience.yearOfExperience == '3an-5ans' %}selected{% endif %}>3 ans à 5 ans</option>
+                        <option value="6ans_9ans" {% if experience.yearOfExperience == '6ans-9ans' %}selected{% endif %}>6 ans à 9 ans</option>
+                        <option value="superieur_10ans" {% if experience.yearOfExperience == 'superieur 10ans' %}selected{% endif %}>Supérieur à 10 ans</option>
+                    </select>
 
-                <label>Nombre d'années</label>
-                <select name="year_of_experience[]" class="form-control">
-                    <option value="">Choisir le niveau</option>
-                    <option value="1" {% if experience.yearOfExperience == '1' %}selected{% endif %}>1 an</option>
-                </select>
-
-                <div class="col-md-12">
-                    <hr class="trait-gris">
+                    <div class="col-md-12">
+                        <hr class="trait-gris">
+                    </div>
                 </div>
+            {% endfor %}
+
+            <div class='add_experience'></div>
+
+            <a href="" class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a>
+        </div> {# Fin accordeon experiences #}
+
+        <h2 class="resume-title resume-title-formations inner-header"> FORMATIONS</h2>
+
+        <div class="accordeon">
+            {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_study pour chaque formation #}
+            {% for study in studies %}
+                <div class="bloc_formation">
+                    <input type="hidden" name="nb_of_studies[]">
+
+                    <label>Nom de la formation</label>
+                    <input type="text" name="name[]" value="{{ study.name }}" class="form-control" placeholder="Nom de la formation">
+
+                    <br>
+
+                    <label>Niveau</label>
+                    <select name="level[]" class="form-control">
+                        <option value="">Choisir le niveau</option>
+                        <option value="bac_sup5" {% if study.level == 'bac sup5' %}selected{% endif %}>Bac supérieur à 5 (ou équivalent)</option>
+                        <option value="bac+5" {% if study.level == 'bac+5' %}selected{% endif %}>Bac +5 (ou équivalent)</option>
+                        <option value="bac+3" {% if study.level == 'bac+3' %}selected{% endif %}>Bac +3 (ou équivalent)</option>
+                        <option value="bac+2" {% if study.level == 'bac+2' %}selected{% endif %}>Bac +2 (ou équivalent)</option>
+                        <option value="bac" {% if study.level == 'bac' %}selected{% endif %}>Bac</option>
+                    </select>
+
+                    <div class="col-md-12">
+                        <hr class="trait-gris">
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class='add_formation'></div>
+
+            <a href="" class="add_bloc_formation">+ Ajouter une formation +</a>
+        </div> {# Fin accordeon formation #}
+
+        <h2 class="resume-title resume-title-competences inner-header"> COMPETENCES</h2>
+
+        <div class="accordeon">
+            <label>Compétences</label>
+            <textarea name="skills" class="form-control" rows="3">{{ skills.skills }}</textarea>
+
+            <br>
+
+            <label>Informatique</label>
+            <input type="text" name="informatique" value="{{ skills.informatique }}" class="form-control">
+        </div> {# Fin accordeon competences #}
+
+        <h2 class="resume-title resume-title-langues inner-header"> LANGUES</h2>
+        
+        <div class="accordeon">
+            {# Si l'utilisateur à enregistré plusieurs langues, on génère une div bloc_langues pour chaque formation #}
+            {% for language in languages %}
+                <div class="bloc_langue">
+                    <input type="hidden" name="nb_of_languages[]">
+
+                    <label>Langues</label>
+                    <select name="language_select[]" class="form-control">
+                        <option value="">Choisir une langue</option>
+                        <option value="anglais" {% if language.languageSelect == 'anglais' %}selected{% endif %}>Anglais</option>
+                        <option value="espagnol" {% if language.languageSelect == 'espagnol' %}selected{% endif %}>Espagnol</option>
+                        <option value="allemand" {% if language.languageSelect == 'allemand' %}selected{% endif %}>Allemand</option>
+                        <option value="chinois" {% if language.languageSelect == 'chinois' %}selected{% endif %}>Chinois</option>
+                        <option value="vietnamien" {% if language.languageSelect == 'vietnamien' %}selected{% endif %}>Vietnamien</option>
+                        <option value="russe" {% if language.languageSelect == 'russe' %}selected{% endif %}>Russe</option>
+                        <option value="portugais" {% if language.languageSelect == 'portugais' %}selected{% endif %}>Portugais</option>
+                        <option value="italien" {% if language.languageSelect == 'italien' %}selected{% endif %}>Italien</option>
+                        <option value="arabe" {% if language.languageSelect == 'arabe' %}selected{% endif %}>Arabe</option>
+                    </select>
+
+                    <br>
+
+                    <label>Niveau</label>
+                    <select name="language_level[]" class="form-control">
+                        <option value="">Votre niveau</option>
+                        <option value="moyen" {% if language.languageLevel == 'moyen' %}selected{% endif %}>Moyen</option>
+                        <option value="bon" {% if language.languageLevel == 'bon' %}selected{% endif %}>Bon</option>
+                        <option value="courant" {% if language.languageLevel == 'courant' %}selected{% endif %}>Courant</option>
+                    </select>
+
+                    <div class="col-md-12">
+                        <hr class="trait-gris">
+                    </div>
+                </div><!-- Fin bloc_langues -->
+            {% endfor %}
+
+            <div class='add_langue'></div>
+            <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br><br>
+        </div> {# Fin accordeon langue #}
+        
+        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET</h2>
+        
+        <div class="accordeon">
+            <div class="form-group">
+                <textarea name="hobbies" class="form-control" rows="3">{{ resume.hobbies }}</textarea>
             </div>
-        {% endfor %}
-
-        <div class='add_experience'></div>
-
-        <a href="" class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a>
-
-        <h2 class="resume-title resume-title-formations"> Formations</h2>
-
-        {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_study pour chaque formation #}
-        {% for study in studies %}
-            <div class="bloc_formation">
-                <input type="hidden" name="nb_of_studies[]">
-
-                <label>Nom de la formation</label>
-                <input type="text" name="name[]" value="{{ study.name }}" class="form-control" placeholder="Nom de la formation">
-
-                <br>
-
-                <label>Niveau</label>
-                <select name="level[]" class="form-control">
-                    <option value="">Choisir le niveau</option>
-                    <option value="bac+5" {% if study.level == 'bac+5' %}selected{% endif %}>Bac +5</option>
-                    <option value="bac+3" {% if study.level == 'bac+3' %}selected{% endif %}>Bac +3</option>
-                </select>
-
-                <div class="col-md-12">
-                    <hr class="trait-gris">
-                </div>
-            </div>
-        {% endfor %}
-
-        <div class='add_formation'></div>
-
-        <a href="" class="add_bloc_formation">+ Ajouter une formation +</a>
-
-        <h2 class="resume-title resume-title-competences"> Compétences</h2>
-
-        <label>Compétences</label>
-        <textarea name="skills" class="form-control" rows="3">{{ skills.skills }}</textarea>
-
-        <br>
-
-        <label>Informatique</label>
-        <input type="text" name="informatique" value="{{ skills.informatique }}" class="form-control">
-
-        <h2 class="resume-title resume-title-langues"> Langues</h2>
-
-        {# Si l'utilisateur à enregistré plusieurs langues, on génère une div bloc_langues pour chaque formation #}
-        {% for language in languages %}
-            <div class="bloc_langue">
-                <input type="hidden" name="nb_of_languages[]">
-
-                <label>Langues</label>
-                <select name="language_select[]" class="form-control">
-                    <option value="">Choisir une langue</option>
-                    <option value="en" {% if language.languageSelect == 'anglais' %}selected{% endif %}>Anglais</option>
-                    <option value="es" {% if language.languageSelect == 'espagnol' %}selected{% endif %}>Espagnol</option>
-                    <option value="ge" {% if language.languageSelect == 'allemand' %}selected{% endif %}>Allemand</option>
-                </select>
-
-                <br>
-
-                <label>Niveau</label>
-                <select name="language_level[]" class="form-control">
-                    <option value="">Votre niveau</option>
-                    <option value="moyen" {% if language.languageLevel == 'moyen' %}selected{% endif %}>Moyen</option>
-                    <option value="bon" {% if language.languageLevel == 'bon' %}selected{% endif %}>Bon</option>
-                    <option value="courant" {% if language.languageLevel == 'courant' %}selected{% endif %}>Courant</option>
-                </select>
-            
-                <div class="col-md-12">
-                    <hr class="trait-gris">
-                </div>
-            </div><!-- Fin bloc_langues -->
-        {% endfor %}
-
-        <div class='add_langue'></div>
-        <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br><br>
-
-        <h2 class="resume-title resume-title-centres-interet"> Centres d'intérêt</h2>
-
-        <div class="form-group">
-            <textarea name="hobbies" class="form-control" rows="3">{{ resume.hobbies }}</textarea>
-        </div>
-
+        </div> {# Fin accordeon centres d'interet #}
+        
         <button type="submit" class="btn btn-primary btn-submit">
             Enregistrer
         </button>

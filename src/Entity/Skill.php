@@ -17,16 +17,6 @@ class Skill
     /**
      * @var string
      */
-    private $languageSelect;
-    
-    /**
-     * @var string
-     */
-    private $languageLevel;
-    
-    /**
-     * @var string
-     */
     private $informatique;
     
     /**
@@ -48,20 +38,6 @@ class Skill
      */
     public function getSkills() {
         return $this->skills;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLanguageSelect() {
-        return $this->languageSelect;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLanguageLevel() {
-        return $this->languageLevel;
     }
 
     /**
@@ -106,24 +82,6 @@ class Skill
      */
     public function setSkills($skills) {
         $this->skills = $skills;
-        return $this;
-    }
-
-    /**
-     * @param string $languageSelect
-     * @return Skill
-     */
-    public function setLanguageSelect($languageSelect) {
-        $this->languageSelect = $languageSelect;
-        return $this;
-    }
-
-    /**
-     * @param string $languageLevel
-     * @return Skill
-     */
-    public function setLanguageLevel($languageLevel) {
-        $this->languageLevel = $languageLevel;
         return $this;
     }
 

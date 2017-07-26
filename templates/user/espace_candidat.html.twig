@@ -1,6 +1,9 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+<h1 class='titre-espace'>ESPACE CANDIDAT</h1>
+<hr>
+
 <div class="box-resume">
     {# <p>Votre CV a été vu X fois.</p> <= À faire pour plus tard #}
 
@@ -29,105 +32,7 @@
         {# On affiche le rendu du CV et les boutons de modifications #}
 
         {# Rendu du CV #}
-        {#{% include 'resume/resume_display.html.twig' %}  Inclusion du fichier de l'affichage standard du CV #}
-
-        <!-- BLOC CV -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="resume-title resume-title-cv"> CV - {{ resume.reference }}</h3>
-                <hr class="trait-bleu">
-                <ul>
-                    <li><em>Domaine professionnel</em> :  {{ resume.professionnalDomain }}</li>
-                    <li><em>M&eacute;tier recherch&eacute;</em> : {{ resume.desiredJob }}</li>
-                    <li><em>Type de contrat recherch&eacute;</em> : {{ resume.contractType }}</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- BLOC EXPERIENCES PROFESSIONNELLES -->
-        <div class="row">
-            <h3 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h3>
-
-            <hr class="trait-bleu">
-
-            {# Affiche toutes les expériences professionnelles de l'utilisateur #}
-            {% for experience in experiences %}
-                <div class="col-md-12">
-                    <p><strong>{{ experience.jobName }}</strong> - {{ experience.yearOfExperience }} an(s) d'expérience</p>
-                    <p><em>Entreprises</em> : {{ experience.companies }}</p>
-                    <p><em>Responsabilit&eacute;s</em> :</p>
-                    <p>{{ experience.description }}</p>
-                </div>
-                
-                {% if not loop.last %}
-                    <div class="col-md-12">
-                            <hr class="trait-gris">
-                    </div>
-                {% endif %}
-                
-            {% endfor %}
-        </div>	
-
-        <!-- BLOC FORMATIONS -->
-        <div class="row">
-            <h3 class="resume-title resume-title-formations"> FORMATIONS</h3>
-
-            <hr class="trait-bleu">
-
-            {# Affiche toutes les formations de l'utilisateur #}
-            {% for study in studies %}
-                <div class="col-md-4">
-                    <ul>
-                        <li>{{ study.name }}</li>
-                    </ul>		
-                </div>
-                <div class="col-md-8">
-                    <ul>
-                        <li>{{ study.level }}</li>
-                    </ul>
-                </div>
-                    
-                {% if not loop.last %}
-                    <div class="col-md-12">
-                        <hr class="trait-gris">
-                    </div>
-                {% endif %}
-                
-            {% endfor %}
-        </div>
-        
-        <!-- BLOC LANGUES + COMPETENCES -->
-        <div class="row">                
-            <div class="col-md-6">
-                <h3 class="resume-title resume-title-competences"> COMPETENCES</h3>
-                
-                <hr class="trait-bleu">
-                
-                <p>{{ skills.skills }}</p>
-            </div>
-            
-            <div class="col-md-6">
-                <h3 class="resume-titleresume-title-langues"> LANGUES</h3>
-                <hr class="trait-bleu">
-                <ul>
-                    <li>Langue : {{ skills.languageSelect }}</li>
-                </ul>
-                <ul>
-                    <li>Niveau : {{ skills.languageLevel }}</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- BLOC CENTRES D'INTERET -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="resume-title resume-title-centres-interet"> CENTRES D'INTERET</h3>
-
-                <hr class="trait-bleu">
-
-                <p>{{ resume.hobbies }}</p>
-            </div>
-        </div>
+        {% include 'resume/resume_display.html.twig' %}  {# Inclusion du fichier de l'affichage standard du CV #}
 
         <!-- BLOC BOUTONS DE MODIFICATION/SUPPRESSION DU CV -->
         <div class="row">

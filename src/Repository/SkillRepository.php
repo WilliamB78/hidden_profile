@@ -46,8 +46,6 @@ EOS;
         $skill
             ->setId($dbSkill['id'])
             ->setSkills($dbSkill['skills'])
-            ->setLanguageSelect($dbSkill['language_select'])
-            ->setLanguageLevel($dbSkill['language_level'])
             ->setInformatique($dbSkill['informatique'])
             ->setUser($user)
         ;
@@ -59,8 +57,6 @@ EOS;
     {
         $data = [
             'skills' => $skill->getSkills(),
-            'language_select' => $skill->getLanguageSelect(),
-            'language_level' => $skill->getLanguageLevel(),
             'informatique' => $skill->getInformatique(),
             'user_id' => $skill->getUserId()
         ];
