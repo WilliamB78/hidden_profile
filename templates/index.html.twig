@@ -15,6 +15,22 @@
     </head>
     
     <body id="body-accueil"> 
+        {% if user_manager.admin %}
+            <br><br><br>
+            <nav class="navbar navbar-inverse">
+               
+                    <a class="navbar-brand">Menu admin</a>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ path('admin') }}">GESTION DES COMMANDES</a>
+                        </li>
+                        <li>
+                        <a href="{{ path('logout_admin') }}">DECONNEXION</a>
+                        </li>
+                    </ul>
+                
+            </nav>
+        {% endif %}
                     
     <header class="header header-accueil">
 

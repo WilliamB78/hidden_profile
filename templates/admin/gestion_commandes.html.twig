@@ -6,33 +6,37 @@
 {% block content %}
     
     <h1>Gestion des commandes</h1>
+    <br>
     
-    <table>
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>ID commande</th>
-                <th>ID entreprise</th>
-                <th>Montant</th>
-                <th>Nombre de jetons</th>
-                <th>Date</th>
-                <th>Statut</th>
+                <th style="padding:10px;" class="text-center">ID commande</th>
+                <th style="padding:10px;" class="text-center">ID entreprise</th>
+                <th style="padding:10px;" class="text-center">Montant</th>
+                <th style="padding:10px;" class="text-center">Nombre de jetons</th>
+                <th style="padding:10px;" class="text-center">Date</th>
+                <th style="padding:10px; width:200px;" class="text-center">Statut</th>
+                <th style="" class="text-center">Modifier</th>
             </tr>
         </thead>
         
         <tbody>
             {% for order in orders %}
-                <tr>
-                    <td>{{ order.id }}</td>
-                    <td>{{ order.id_company }}</td>
-                    <td>{{ order.amount }}</td>
-                    <td>{{ order.nb_of_tokens }}</td>
-                    <td>{{ order.order_date }}</td>
-                    <td>{{ order.status }}</td>
-                    <a
-                        href="{{ path('admin_order_edit', {id: order.id}) }}"
+                <tr style="padding:5px;">
+                    <td style="padding:5px;">{{ order.id }}</td>
+                    <td style="padding:5px;">{{ order.idCompany }}</td>
+                    <td style="padding:5px;">{{ order.amount }}</td>
+                    <td style="padding:5px;">{{ order.nbOfTokens }}</td>
+                    <td style="padding:5px;">{{ order.orderDate|date('d/m/Y H:m:s') }}</td>
+                    <td style="padding:5px;">{{ order.status }}</td>
+                    <td style="padding:5px">
+                        <a
+                        href="{{ path('admin_edit_order', {id: order.id}) }}"
                         class="btn btn-primary">
                         Modifier
-                    </a>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

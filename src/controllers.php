@@ -65,6 +65,19 @@ $company->before(function () use ($app) {
 
 $app->mount('/recruteur', $company);
 
+
+// admin /////////////////////////////////////////
+$admin = $app['controllers_factory'];
+
+// protection de l'accès
+$admin->before(function () use ($app) {
+    if (!$app['user.manager']->isAdmin()) {
+        $app->abort(403, 'Accès refusé');
+    }
+});
+
+$app->mount('/admin', $admin);
+
 // Route pour le dashboard du candidat
 $user
     ->match('/', 'user.controller:dashboardAction')
@@ -174,10 +187,26 @@ $company
 
 // ---------------------- Admin Dashboard ---------------------------------
 
-$app
-    ->get('admin' , 'admin.order.controller:indexAction')
+$admin
+    ->match('/admin' , 'admin.order.controller:indexAction')
     ->bind('admin')
 ;
+
+$admin
+    ->match('/commandes_modification/{id}', 'admin.order.controller:editAction')
+    ->bind('admin_edit_order')
+;
+
+$app
+    ->match('/connexion_admin', 'admin.admins.controller:loginAction')
+    ->bind('login_admin')
+;
+
+$app
+    ->match('/deconnexion_admin', 'admin.admins.controller:logoutAction')
+    ->bind('logout_admin')
+;
+
 
 //---------------------------------------------------------------------------------
         
