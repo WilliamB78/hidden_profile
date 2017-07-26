@@ -23,11 +23,16 @@
             {% for order in orders %}
                 <tr>
                     <td>{{ order.id }}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ order.id_company }}</td>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.nb_of_tokens }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td>{{ order.status }}</td>
+                    <a
+                        href="{{ path('admin_order_edit', {id: order.id}) }}"
+                        class="btn btn-primary">
+                        Modifier
+                    </a>
                 </tr>
             {% endfor %}
         </tbody>

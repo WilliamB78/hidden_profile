@@ -88,4 +88,19 @@ class OrderRepository extends RepositoryAbstract{
         
         return $orders;
     }
+    
+    public function find($id)
+    {
+        
+        $dbOrder = $this->db->fetchAssoc(
+            'SELECT * FROM orders',
+            [':id' => $id]
+        );
+
+        if (!empty($dbOrder)) {
+            return $this->buildFromArray($dbOrder);
+        }
+
+        return null;
+    }
 }
