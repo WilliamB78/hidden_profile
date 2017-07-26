@@ -243,10 +243,7 @@ hr{
 #title-header {
     color: #fff;
     text-align: center;
-    width: 400px;
-    height: 60px;
-    line-height: 60px;
-    display: inline-block;
+    margin-top: 40px;
 }
 
 /*---------------- CONTAINER ----------------*/
@@ -311,11 +308,15 @@ hr{
 
 /*-----------------------------------BODY------------------*/
 
-.col-lg-6-accueil {
+.accueil {
     color: #fff;
     font-size: 1.5rem;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 40px;
+}
+/*box video*/
+#accueil{
+    padding: 0;
 }
 
 .box-accueil {
@@ -326,12 +327,26 @@ hr{
     border-radius: 10px;
     text-align: center;
 }
+/*LINK 'a' NEWS BOX*/
+.box-accueil li a{
+    color: #fff;
+    text-decoration: underline;
+}
+/*height of box NEWS*/
+#box-news{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#last-box-news{
+    height: 360px;
+}
 
 .box-accueil h1
 {
     font-size: 3rem;
     margin-bottom: 20px;
     font-weight: bold;
+    color: #fff;
 }
 .box-accueil p a
 {
@@ -388,13 +403,18 @@ hr{
 footer{
     position: fixed;
     bottom: 0;
+    left:0;
     height: 40px;
     width: 100%; 
-    background: rgba(0,0,0,0.8);    
+    background: rgba(0,0,0,0.4);    
 }
 .footer-conteneur{
-    width: 459px;
+    width: 100%;
     margin: 0 auto;
+}
+footer a:hover{
+    color: #82d8c1;
+    text-decoration: none;
 }
 .list-footer{
     display: inline-block;
@@ -427,6 +447,10 @@ footer{
 
 /* -------------------- AFFICHAGE DU CV ------------------------*/
 
+.titre-espace{
+    margin-top: 5%;
+}
+
 .box-resume{
     width: 700px;
     padding: 0;
@@ -454,18 +478,37 @@ footer{
 .box-header a{
     margin-top: 10px;
 }
-.trait-bleu{
-    height: 2px;
-    background-color: #5cc2a9;
+
+.box-resume .box-header-company{
+    position: relative;
+    background: url(../img/bigLogo.png) no-repeat; 
+    background-size: cover;   
+    margin: 0;
+    padding: 0;
+    height: 270px;
 }
-.trait-gris{
+
+.box-resume .box-header-company a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+.container .trait-bleu{
+    height: 2px;
+    background: #5cc2a9;
+}
+.container .trait-gris{
     height: 1px;
-    background-color:#ccc;
+    background:#ccc;
 }
 
 .resume-title{
     font-size: 2.4rem;
     margin: 0;
+    cursor: pointer;
 }
 .resume-title::before{
     font-family:'FontAwesome';
@@ -524,6 +567,17 @@ footer{
 }
 
 /* FORMULAIRE CV */
+
+.container .form-resume{
+    width: 700px;
+    font-size: 2rem;
+}
+.container .form-resume h2{
+    margin-top: 20px;
+}
+.container .form-resume [placeholder]{
+    font-size: 1.6rem;
+}
 
 .add_block,
 .add_block2{
@@ -692,7 +746,7 @@ footer{
     
      
 }
-.recruteur_token, p, .underlined{
+.recruteur_token, .underlined{
     color: #fff;
     font-size: 1.5rem;
     margin-top: 30px;
