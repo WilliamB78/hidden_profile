@@ -10,7 +10,36 @@
             <label>Domaine professionnel <span class="red-star">*</span></label>
             <select name="professionnal_domain" class="form-control">
                 <option value="">Choisir le domaine professionnel</option>
+                <option value="administration">Administration</option>
+                <option value="banque"</option>
+                <option value="Audit">Audit</option>
+                <option value="architecture">Architecture</option>
+                <option value="btp">BTP</option>
+                <option value="commercial_vente">Commercial-Vente</option>
+                <option value="communication">Communication</option>
+                <option value="comptabilite">Comptabilité</option>
+                <option value="edition">Edition</option>
+                <option value="import_export">Import Export</option>
+                <option value="finance">Finance</option>
+                <option value="gestion">Gestion</option>
+                <option value="informatique">Grande distribution</option>
+                <option value="hotellerie">Hotellerie</option>
+                <option value="ingenierie">Ingénierie</option>
                 <option value="informatique">Informatique</option>
+                <option value="informatique">Immobilier</option>
+                <option value="internet_ecommerce">Internet -e-Commerce</option>
+                <option value="juridique">Juridique</option>
+                <option value="logistique">Logistique</option>
+                <option value="marketing">Marketing</option>
+                <option value="management">Management</option>
+                <option value="qualite_inspection">Qualité-Inspection</option>
+                <option value="ressources_humaines">Ressources humaines</option>
+                <option value="restauration">Restauration</option>
+                <option value="sante">Santé</option>
+                <option value="securite">Sécurité</option>
+                <option value="service_clientele">Service clientèle</option>
+                <option value="tourisme">Tourisme</option>
+                <option value="telemarketing">Télémarketing</option>
             </select>
         </div>
 
@@ -29,121 +58,145 @@
             </select>
         </div>
         
-        <h2 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h2>
-
-        <div class="bloc_experience">
-            <input type="hidden" name="nb_of_experiences[]">
-
-            <div class="form-group">
-                <label>Nom du poste <span class="red-star">*</span></label>
-                <input type="text" name="job_name[]" class="form-control" placeholder="Nom du poste">
-            </div>
-
-            <div class="form-group">
-                <label>Nombre d'années <span class="red-star">*</span></label>
-                <select name="year_of_experience[]" class="form-control">
-                    <option value="">Choisir le niveau</option>
-                    <option value="1">1 an</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Sociétés <span class="red-star">*</span></label>
-                <input type="text" name="companies[]" class="form-control" placeholder="Sociétés">
-            </div>
-
-            <div class="form-group">
-                <label>Responsabilités <span class="red-star">*</span></label>
-                <textarea name="description[]" class="form-control" rows="3"></textarea>
-            </div>
-            
-            <div class="col-md-12">
-                <hr class="trait-gris">
-            </div>
-        </div>
+        <h2 class="resume-title resume-title-experiences inner-header"> EXPERIENCES PROFESSIONNELLES</h2>
         
-        <div class='add_experience'></div>
-
-        <a href='' class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a><br>
-
-        <h2 class="resume-title resume-title-formations"> Formations</h2>
-
-        <div class='bloc_formation'>
-            <input type="hidden" name="nb_of_studies[]">
-
-            <div class="form-group">
-                <label>Nom de la formation <span class="red-star">*</span></label>
-                <input type="text" name="name[]" class="form-control" placeholder="Nom de la formation">
-            </div>
+        <div class="accordeon">
+            <div class="bloc_experience">
+                <input type="hidden" name="nb_of_experiences[]">
 
                 <div class="form-group">
-                <label>Niveau <span class="red-star">*</span></label>
-                <select name="level[]" class="form-control">
-                    <option value="">Choisir le niveau</option>
-                    <option value="bac+5">Bac +5</option>
-                    <option value="bac+3">Bac +3</option>
-                </select>
+                    <label>Nom du poste <span class="red-star">*</span></label>
+                    <input type="text" name="job_name[]" class="form-control" placeholder="Nom du poste">
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre d'années <span class="red-star">*</span></label>
+                    <select name="year_of_experience[]" class="form-control">
+                      <option value="">Choisir le niveau</option>
+                        <option value="inferieur_6mois">inférieur à 6 mois</option>
+                        <option value="6mois_12mois">6 mois à 12 mois</option>
+                        <option value="1ans_2ans">1 an à 2 ans</option>
+                        <option value="3ans_5ans">3 ans à 5 ans</option>
+                        <option value="6ans_9ans">6 ans à 9 ans</option>
+                        <option value="superieur_10ans">Supérieur à 10 ans</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Sociétés <span class="red-star">*</span></label>
+                    <input type="text" name="companies[]" class="form-control" placeholder="Sociétés">
+                </div>
+
+                <div class="form-group">
+                    <label>Responsabilités <span class="red-star">*</span></label>
+                    <textarea name="description[]" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
             </div>
-            
-            <div class="col-md-12">
-                <hr class="trait-gris">
+
+            <div class='add_experience'></div>
+
+            <a href='' class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a><br>
+        </div> {# Fin accordeon experience #}
+
+        <h2 class="resume-title resume-title-formations inner-header"> Formations</h2>
+
+        <div class="accordeon">
+            <div class='bloc_formation'>
+                <input type="hidden" name="nb_of_studies[]">
+
+                <div class="form-group">
+                    <label>Nom de la formation <span class="red-star">*</span></label>
+                    <input type="text" name="name[]" class="form-control" placeholder="Nom de la formation">
+                </div>
+
+                    <div class="form-group">
+                    <label>Niveau <span class="red-star">*</span></label>
+                    <select name="level[]" class="form-control">
+                        <option value="">Choisir le niveau</option>
+                        <option value="bac_sup5">Bac supérieur à 5 (ou équivalent)</option>
+                        <option value="bac+5">Bac +5 (ou équivalent)</option>
+                        <option value="bac+3">Bac +3 (ou équivalent)</option>
+                        <option value="bac+3">Bac +2 (ou équivalent)</option>
+                        <option value="bac">Bac</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
             </div>
-        </div>
+
+            <div class='add_formation'></div>
+            <a href='' class="add_bloc_formation">+ Ajouter une formation +</a><br>
+        </div> {# Fin accordeon formation #}
         
-        <div class='add_formation'></div>
-        <a href='' class="add_bloc_formation">+ Ajouter une formation +</a><br>
-
-        <h2 class="resume-title resume-title-competences"> Compétences</h2>
-
-        <div class="form-group">
-            <label>Compétences <span class="red-star">*</span></label>
-            <textarea name="skills" class="form-control" rows="3"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Informatique <span class="red-star">*</span></label>
-            <input type="text" name="informatique" value="{% if post is not empty %}{{ post.informatique }}{% endif %}" class="form-control">
-        </div>
-
-        <h2 class="resume-title resume-title-langues"> Langues</h2>
+        <h2 class="resume-title resume-title-competences inner-header"> Compétences</h2>
         
-        <div class="bloc_langue">
-            <input type="hidden" name="nb_of_languages[]">
-            
+        <div class="accordeon">
             <div class="form-group">
-                <label>Sélectionnez un langue <span class="red-star">*</span></label>
-                <select name="language_select[]" class="form-control">
-                    <option value="">Choisir une langue</option>
-                    <option value="anglais">Anglais</option>
-                    <option value="espagnol">Espagnol</option>
-                    <option value="allemand">Allemand</option>
-                </select>
+                <label>Compétences <span class="red-star">*</span></label>
+                <textarea name="skills" class="form-control" rows="3"></textarea>
             </div>
 
             <div class="form-group">
-                <label>Sélectionnez votre niveau <span class="red-star">*</span></label>
-                <select name="language_level[]" class="form-control">
-                    <option value="">Votre niveau</option>
-                    <option value="moyen">Moyen</option>
-                    <option value="bon">Bon</option>
-                    <option value="courant">Courant</option>
-                </select>
+                <label>Informatique <span class="red-star">*</span></label>
+                <input type="text" name="informatique" value="{% if post is not empty %}{{ post.informatique }}{% endif %}" class="form-control">
             </div>
-            
-            <div class="col-md-12">
-                <hr class="trait-gris">
-            </div>
-        </div><!-- Fin bloc_langues -->
+        </div> {# Fin accordeon competences #}
+
+        <h2 class="resume-title resume-title-langues inner-header"> Langues</h2>
         
-        <div class='add_langue'></div>
-        <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br>
+        <div class="accordeon">
+            <div class="bloc_langue">
+                <input type="hidden" name="nb_of_languages[]">
 
-        <h2 class="resume-title resume-title-centres-interet"> Centres d'intérêt</h2>
+                <div class="form-group">
+                    <label>Sélectionnez un langue <span class="red-star">*</span></label>
+                    <select name="language_select[]" class="form-control">
+                        <option value="">Choisir une langue</option>
+                        <option value="anglais">Anglais</option>
+                        <option value="espagnol">Espagnol</option>
+                        <option value="allemand">Allemand</option>
+                        <option value="chinois">Chinois</option>
+                        <option value="vietnamien">Vietnamien</option>
+                        <option value="russe">Russe</option>
+                        <option value="portugais">Portugais</option>
+                        <option value="italien">Italien</option>
+                        <option value="arabe">Arabe</option>
+                    </select>
+                </div>
 
-        <div class="form-group">
-            <label>Centres d'intérêts <span class="red-star">*</span></label>
-            <textarea name="hobbies" class="form-control" rows="3"></textarea>
-        </div>
+                <div class="form-group">
+                    <label>Sélectionnez votre niveau <span class="red-star">*</span></label>
+                    <select name="language_level[]" class="form-control">
+                        <option value="">Votre niveau</option>
+                        <option value="moyen">Moyen</option>
+                        <option value="bon">Bon</option>
+                        <option value="courant">Courant</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
+            </div><!-- Fin bloc_langues -->
+
+            <div class='add_langue'></div>
+            <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br>
+        </div> {# Fin accordeon langues #}
+        
+        <h2 class="resume-title resume-title-centres-interet inner-header"> Centres d'intérêt</h2>
+        
+        <div class="accordeon">
+            <div class="form-group">
+                <label>Centres d'intérêts <span class="red-star">*</span></label>
+                <textarea name="hobbies" class="form-control" rows="3"></textarea>
+            </div>
+        </div> {# Fin accordeon centres d'interêt #}
 
         <button type="submit" class="btn btn-primary btn-submit">
             Enregistrer
