@@ -1,0 +1,99 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Commander des jetons' %}
+    
+{% block content %}
+    
+
+<div class="contrainer-fluid">
+    
+    <div class="row">
+         <h1 class="title_token">Commander des jetons</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 formule">
+            <form class="form_formule" action="/your-server-side-code" method="POST">
+            <h2 class="formule_title">Pack 10 CV - 190€ HT</h2>
+            <p class="formule_paragraphe"><strong>10 CV</strong> dont vous pouvez
+                obtenir les informations après les avoir consultés
+                <br><strong>30 jours</strong> pour faire votre choix</p>
+            <script
+                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                 data-key="pk_test_dYN1i3P2rMZxWOcdGuHz2Gk9"
+                 data-amount="19000"
+                 data-name="Hidden Profile"
+                 data-description="Widget"
+                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                 data-locale="auto"
+                 data-zip-code="true"
+                 data-currency="eur">
+            </script>
+            </form>
+        </div>
+         <div class="col-md-6 col-sm-12 formule">
+            <form class="form_formule" action="/your-server-side-code" method="POST">
+            <h2 class="formule_title">Pack 10 CV - 240€ HT</h2>
+            <p class="formule_paragraphe"><strong>10 CV</strong> dont vous pouvez
+                obtenir les informations après les avoir consultés
+                <br><strong>60 jours</strong> pour faire votre choix</p>
+            <script
+                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                 data-key="pk_test_dYN1i3P2rMZxWOcdGuHz2Gk9"
+                 data-amount="24000"
+                 data-name="Hidden Profile"
+                 data-description="Widget"
+                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                 data-locale="auto"
+                 data-zip-code="true"
+                 data-currency="eur">
+            </script>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 formule">
+            <form class="form_formule" action="/your-server-side-code" method="POST">
+            <h2 class="formule_title">Pack 20 CV - 290€ HT</h2>
+            <p class="formule_paragraphe"><strong>20 CV</strong> dont vous pouvez
+                obtenir les informations après les avoir consultés
+                <br><strong>30 jours</strong> pour faire votre choix</p>
+            <script
+                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                 data-key="pk_test_dYN1i3P2rMZxWOcdGuHz2Gk9"
+                 data-amount="29000"
+                 data-name="Hidden Profile"
+                 data-description="Widget"
+                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                 data-locale="auto"
+                 data-zip-code="true"
+                 data-currency="eur">
+            </script>
+            </form>
+        </div>
+         <div class="col-md-6 col-sm-12 formule">
+            <form class="form_formule" action="/your-server-side-code" method="POST">
+            <h2 class="formule_title">Pack 20 CV - 340€ HT</h2>
+            <p class="formule_paragraphe"><strong>20 CV</strong> dont vous pouvez
+                obtenir les informations après les avoir consultés
+                <br><strong>60 jours</strong> pour faire votre choix</p>
+            <script
+                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                 data-key="pk_test_dYN1i3P2rMZxWOcdGuHz2Gk9"
+                 data-amount="34000"
+                 data-name="Hidden Profile"
+                 data-description="FORMULE 4"
+                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                 data-locale="auto"
+                 data-zip-code="true"
+                 data-currency="eur">
+            </script>
+            </form>
+        </div>
+    </div>
+    <br>
+    
+</div>
+    
+    
+    
+{% endblock %}

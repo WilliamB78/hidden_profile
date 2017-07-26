@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Envoyer à un ami' %}
+    
+{% block content %}
+    <form method="post">
+        <h3 id="connect">{#ENVOYER &#192; UN AMI#}PARTAGER NOTRE SITE</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" name="nomPrenom" id="nomPrenom" placeholder="Votre prénom, nom">
+        </div>
+
+        <div class="form-group">
+        <input type="email" class="form-control" name="emailSender" id="emailSender" placeholder="Votre email">
+        </div>
+        
+        <div class="form-group">
+        <input type="email" class="form-control" name="emailReceiver" id="emailReceiver" placeholder="Email destinataire">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet">
+        </div>
+
+        <div class="form-group">
+            <textarea type="text" cols="20" rows="20" class="form-control" name="comment" placeholder="Commentaire"></textarea>
+        </div>
+        
+            <button type="submit" class="btn btn-primary btn-submit">PARTAGER</button>
+    </form>
+{% endblock %}

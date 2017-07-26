@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>{% block title '' %} - Hidden Profile </title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!-- CSS principal -->
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body id="body-accueil"> 
+                    
+    <header class="header header-accueil">
+
+       <a href="{{path('homepage')}}" class="logo" id="logo"><img src="{{ asset('img/logoGreen.png') }}"></a>
+
+       <input class="menu-btn" type="checkbox" id="menu-btn" />
+       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+
+       <ul class="menu">
+         <li><a href="{{path('homepage')}}">ACCUEIL</a></li>
+         <li><a href="{{path('share')}}">PARTAGER</a></li>
+
+         <li class="hoverSlide">
+            {# Si le candidat est connecté on affiche son nom et son prénom #}
+            {% if user_manager.user %} 
+                <a href="{{ path('user_dashboard') }}">{{ user_manager.userName|upper }}</a>
+            {# Sinon si l'entreprise est connecté on affiche le bouton de déconnexion pour les entreprises #}
+            
+            {% elseif company_manager.company %} 
+                <a href="{{ path('company_dashboard') }}">ESPACE ENTREPRISE</a>
+                
+            {# Sinon on affiche le menu "normal" #}
+            {% else %}
+            <a href="#">CANDIDAT<span class="arrow">&#x25BC;</span></a>
+
+            <ul>
+                <a href="{{ path('login_user') }}">Connexion</a>
+                <a href="{{ path('register_user') }}">Inscription</a>
+            </ul>
+            {% endif %}
+         </li>    
+
+         <li class="hoverSlide">
+            {# Si le candidat est connecté on affiche son nom et son prénom #}
+            {% if user_manager.user %} 
+                <a href="{{ path('logout_user') }}">DECONNEXION</a>
+                
+            {% elseif company_manager.company %}
+                <a href="{{ path('logout_company') }}">DECONNEXION</a> 
+                
+            {# Sinon on affiche le menu "normal" #}
+            {% else %}
+            <a href="#">RECRUTEUR<span class="arrow">&#x25BC;</span></a>
+            <ul>
+                <a href="{{ path('login_company') }}">Connexion</a>
+                <a href="{{ path('register_company') }}">Inscription</a>
+            </ul>
+            {% endif %}
+         </li>
+       </ul>
+     </header>
+
+        {% for type, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                {% if type == 'error' %}
+                    {% set type = 'danger' %}
+                {% endif %}
+                <div class="alert alert-{{ type }}">
+                    {{ flash|raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
+        <div class="container">
+ 
+</form>
+        {% block content %}
+            <div class="container">
+                <h2 id="title-header">CV ANONYME - VOTRE COMP&#201;TENCE AVANT TOUT...</h2>        
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-sm-6 col-xs-6-accueil">
+                        <div class="box-accueil">
+                            <h1>CANDIDATS - Seul votre talent compte !</h1>
+                                <ul>
+                                    <li class="banner">Le CV masqué vous garanti votre anonymat dans votre recherche.</li>
+                                    <li class="banner">Mettez en avant vos expériences et qualités personnelles.</li>	
+                                    <li class="banner">Inscrivez-vous et complétez votre CV anonyme en ligne</li>
+                                </ul>
+                                <a href="{{path('register_user')}}" class="btn-inscription">INSCRIPTION</a>
+                                <p>Vous avez déjà un compte ? <a href="{{path('login_user')}}" class="boxLogin">Connectez-vous ici</a></p> 
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-sm-6 col-xs-6-accueil">
+                        <div class="box-accueil">
+                            <h1 id="headerEnt">ENTREPRISES - Venez découvrir nos talents !</h1>
+                                <ul>
+                                    <li class="banner">Osez ce concept de recrutement innovant.</li>	
+                                    <li class="banner">Jugez vos candidats par leurs expériences et leurs qualités personnelles.</li>
+                                    <li class="banner">Inscrivez-vous pour découvrir les CV compétents</li>
+                                </ul>
+                                <a href="{{path('register_company')}}" class="btn-inscription">INSCRIPTION</a>
+                                <p>Vous avez déjà un compte ? <a href="{{path('login_company')}}" class="boxLogin">Connectez-vous ici</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<hr>-->
+
+                <div class="row">
+                    
+                    <div class="col-lg-6 col-sm-6 col-xs-6-accueil">
+                        <h2 class="videoZoom"><i><small>#</small>ZoomIn</i></h2>
+                        <!-- 16:9 aspect ratio -->
+                        <div class="contentNews embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" frameborder="0" width="480" height="270" src="//www.dailymotion.com/embed/video/x45aopi" allowfullscreen></iframe>                       </div>   
+                        </div>
+                    </div>
+                
+                    <div class="col-lg-6 col-sm-6 col-xs-6-accueil">
+                        <div class="box-accueil">
+                            <h1>NEWS</h1>
+                                <ul>
+                                    <li class="banner"><a href="http://rmc.bfmtv.com/emission/baisse-des-apl-soit-on-ne-pouvait-pas-payer-tout-le-monde-soit-il-fallait-faire-un-effort-1223032.html"></a>Baisse de l'APL</li>	
+                                    <li class="banner"><a href="https://www.lesechos.fr/idees-debats/cercle/030428596380-ce-qui-manque-aux-start-up-francaises-pour-vraiment-reussir-2103760.php"></a>Ce qui manque aux start-up françaises pour vraiment réussir</li>
+                                    <li class="banner"><a href="https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=16&cad=rja&uact=8&ved=0ahUKEwjHtM639qLVAhVrCMAKHUWpAk4QFgh1MA8&url=http%3A%2F%2Fwww.leparisien.fr%2Feconomie%2Femploi%2Fdiscrimation-a-l-embauche-accorhotels-et-courtepaille-epingles-14-03-2017-6762096.php&usg=AFQjCNGCsSNqqkKzYjQ8clwMAAiSF47CQQ">Discrimination à l'embauche : AccorHotels et Courtepaille épinglés ...</a></li>
+                                    <li class="banner"><a href="https://stationf.co/fr/">STATION F – World's biggest startup campus</a></li>
+                                </ul>
+                                
+                        </div>
+                    </div>
+
+                </div>
+        {% endblock %}
+
+        </div>
+        
+        <footer>
+            <nav class="footer-conteneur">
+		<ul class="footer-content">
+                    <li class="list-footer"><a href="{{ path('about_us') }}" class="espace-footer">Qui sommes-nous ?</a></li>
+                    <li class="list-footer"><a href="{{ path('contact_us') }}" class="espace-footer"> Nous contacter</a></li>
+                    <li class="list-footer"><a href="#" class="espace-footer"> Espace presse</a></li>
+		</ul>
+            </nav>
+	</footer>
+
+        {% block javascripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{{ asset('js/appburger.js') }}"></script>
+
+        {% endblock %}
+        
+    </body>
+</html>

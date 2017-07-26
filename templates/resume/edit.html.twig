@@ -1,0 +1,162 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <form method="post" class="form-resume">
+        <h3>MODIFIER VOTRE CV</h3>
+
+        <p><span class="red-star">*</span> Champs obligatoires</p>
+
+        <label>Domaine professionnel</label>
+        <select name="professionnal_domain" class="form-control">
+            <option value="">Choisir le domaine professionnel</option>
+            <option value="informatique" {% if resume.professionnalDomain == 'informatique' %}selected{% endif %}>Informatique</option>
+        </select>
+
+        <br>
+
+        <label>Poste recherché</label>
+        <input type="text" name="desired_job" class="form-control" value="{{ resume.desiredJob }}" placeholder="Poste recherché">
+
+        <br>
+
+        <label>Type de contrat recherché</label>
+        <select name="contract_type" class="form-control">
+            <option value="">Choisir un contrat</option>
+            <option value="cdi" {% if resume.contractType == 'cdi' %}selected{% endif %}>CDI</option>
+            <option value="cdd" {% if resume.contractType == 'cdd' %}selected{% endif %}>CDD</option>
+            <option value="stage" {% if resume.contractType == 'stage' %}selected{% endif %}>Stage</option>
+        </select>
+
+        <h2 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h2>
+
+        {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_experience pour chaque formation #}
+        {% for experience in experiences %}
+            <div class="bloc_experience">
+                <input type="hidden" name="nb_of_experiences[]">
+
+                <label>Nom du poste</label>
+                <input type="text" name="job_name[]" value="{{ experience.jobName }}" class="form-control" placeholder="Nom du poste">
+
+                <br>
+
+                <label>Société(s)</label>
+                <input type="text" name="companies[]" value="{{ experience.companies }}" class="form-control" placeholder="Sociétés">
+
+                <br>
+
+                <label>Description de vos responsabilités</label>
+                <textarea name="description[]" class="form-control" rows="3">{{ experience.description }}</textarea>
+
+                <br>
+
+                <label>Nombre d'années</label>
+                <select name="year_of_experience[]" class="form-control">
+                    <option value="">Choisir le niveau</option>
+                    <option value="1" {% if experience.yearOfExperience == '1' %}selected{% endif %}>1 an</option>
+                </select>
+
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class='add_experience'></div>
+
+        <a href="" class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a>
+
+        <h2 class="resume-title resume-title-formations"> Formations</h2>
+
+        {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_study pour chaque formation #}
+        {% for study in studies %}
+            <div class="bloc_formation">
+                <input type="hidden" name="nb_of_studies[]">
+
+                <label>Nom de la formation</label>
+                <input type="text" name="name[]" value="{{ study.name }}" class="form-control" placeholder="Nom de la formation">
+
+                <br>
+
+                <label>Niveau</label>
+                <select name="level[]" class="form-control">
+                    <option value="">Choisir le niveau</option>
+                    <option value="bac+5" {% if study.level == 'bac+5' %}selected{% endif %}>Bac +5</option>
+                    <option value="bac+3" {% if study.level == 'bac+3' %}selected{% endif %}>Bac +3</option>
+                </select>
+
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class='add_formation'></div>
+
+        <a href="" class="add_bloc_formation">+ Ajouter une formation +</a>
+
+        <h2 class="resume-title resume-title-competences"> Compétences</h2>
+
+        <label>Compétences</label>
+        <textarea name="skills" class="form-control" rows="3">{{ skills.skills }}</textarea>
+
+        <br>
+
+        <label>Informatique</label>
+        <input type="text" name="informatique" value="{{ skills.informatique }}" class="form-control">
+
+        <h2 class="resume-title resume-title-langues"> Langues</h2>
+
+        {# Si l'utilisateur à enregistré plusieurs langues, on génère une div bloc_langues pour chaque formation #}
+        {% for language in languages %}
+            <div class="bloc_langue">
+                <input type="hidden" name="nb_of_languages[]">
+
+                <label>Langues</label>
+                <select name="language_select[]" class="form-control">
+                    <option value="">Choisir une langue</option>
+                    <option value="en" {% if language.languageSelect == 'anglais' %}selected{% endif %}>Anglais</option>
+                    <option value="es" {% if language.languageSelect == 'espagnol' %}selected{% endif %}>Espagnol</option>
+                    <option value="ge" {% if language.languageSelect == 'allemand' %}selected{% endif %}>Allemand</option>
+                </select>
+
+                <br>
+
+                <label>Niveau</label>
+                <select name="language_level[]" class="form-control">
+                    <option value="">Votre niveau</option>
+                    <option value="moyen" {% if language.languageLevel == 'moyen' %}selected{% endif %}>Moyen</option>
+                    <option value="bon" {% if language.languageLevel == 'bon' %}selected{% endif %}>Bon</option>
+                    <option value="courant" {% if language.languageLevel == 'courant' %}selected{% endif %}>Courant</option>
+                </select>
+            
+                <div class="col-md-12">
+                    <hr class="trait-gris">
+                </div>
+            </div><!-- Fin bloc_langues -->
+        {% endfor %}
+
+        <div class='add_langue'></div>
+        <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br><br>
+
+        <h2 class="resume-title resume-title-centres-interet"> Centres d'intérêt</h2>
+
+        <div class="form-group">
+            <textarea name="hobbies" class="form-control" rows="3">{{ resume.hobbies }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+            Enregistrer
+        </button>
+
+        <a href="{{ path('user_dashboard') }}" class="btn btn-primary btn-annuler">
+            Annuler
+        </a>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }} {# reprend le contenu du bloc qu'on surcharge #}
+    {# permet d'ajouter des choses plutôt que de les remplacer #}
+    
+    <script type="text/javascript" src="{{ asset('js/add_block_resume.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,761 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto'); */
+/* @import url('https://fonts.googleapis.com/css?family=Antic'); */
+@import url('https://fonts.googleapis.com/css?family=Antic|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+/*    background: rgba(0,0,0,0.1);*/
+    background: url(../img/pattern_whirlpool.png) repeat; 
+    font-family: 'Open Sans Condensed';
+}
+#body-accueil{
+    background: url(../img/body-img2.jpg) no-repeat center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+    
+}
+*{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+
+h1, h2, h3, h4, p, ul, li, img, figure, figcaption{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style-type: none;
+}
+.banner{
+    margin-bottom: 10px;
+}
+h1, h2, a{
+    word-spacing: 5px;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+hr{
+    margin: 15px 0;
+    border: 0;
+    padding: 0;
+    height: 1px;
+}
+
+.row,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-12 {
+    margin: 0;
+    padding: 0;
+}
+
+.row {	
+    padding: 15px;
+}
+.alert{
+    margin-top: 100px;
+}
+
+/*------------------------ HEADER-------------- */
+
+.header {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 3;
+    box-shadow: 0 0 5px #ccc;
+}
+.header a {
+    color: #fff;
+}
+.header-accueil {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 5px #222;
+}
+.header a:hover
+{
+    color: #82d8c1;
+}
+
+
+#logo img{
+  width: 70%;
+  height:70%;
+}
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+ }
+
+.header li a {
+  display: block;
+  padding: 16px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+.header li ul {
+  background: rgba(0,0,0,0.5);
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: rgba(0,0,0,0.2); 
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2rem;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/*------------------------------MENU NAV-----------*/
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+/* menu icon */
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #fff; 
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+.arrow{
+  margin-left: 5px;
+}
+
+
+/*----------------------------------MENU BTN BURGER-----------------  */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 600px; 
+  display: block;
+  
+}
+
+.header .menu-btn:checked ~ .menu .dropdown{
+  /*position: relative;*/
+  display: block;
+}
+
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/*--------------------- Dropdown Button--------------------- */
+/*----------fonction jQuery--------*/
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+    .header li {
+      float: left;
+    }
+    .header li a {
+      padding: 19px 30px;
+    }
+    .header .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+    }
+    .header .menu-icon {
+      display: none;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      height: 250px;
+    }
+}
+
+
+/*---------------- TITLE EN-TETE----------------*/
+#title-header {
+    color: #fff;
+    text-align: center;
+    width: 400px;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+}
+
+/*---------------- CONTAINER ----------------*/
+.container{
+    margin: 40px auto;
+}
+
+.container hr{
+    background: #fff;
+}
+
+.container form { 
+    background-color: #fefefe;
+    margin: 60px auto 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 550px;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.container form h3{
+    text-align: center;
+    color: #29aa88;
+    border-bottom: 1px solid #29aa88;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+.container form h2{
+    color: #29aa88;
+    border-bottom: 1px solid #29aa88;
+    margin-bottom: 20px;
+}
+.container form .btn-submit,
+.container form .btn-annuler{
+    font-size: 16px;
+    display: block;
+    height: 40px;
+    margin: 15px auto 0;
+    background: #157a5d;
+}
+
+.container form .btn-annuler{
+    width: 80px;
+    background: #ccc;
+    border: none;
+    color: #000;
+}
+
+.container form .red-star{
+    color: red;
+}
+
+/* RESPONSIVE FORMULAIRES */
+@media screen and (max-width: 480px){
+    .container form { 
+        width: 100%;
+    }
+    .container h3{
+        font-size: 2.5rem;
+    }
+}
+
+/*-----------------------------------BODY------------------*/
+
+.col-lg-6-accueil {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.box-accueil {
+    display: inline-block;
+    width: 550px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.box-accueil h1
+{
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.box-accueil p a
+{
+    color: #82d8c1;
+}
+
+/*---------------- RESPONSIVE FORMULAIRES----------- */
+@media screen and (max-width: 640px){
+    .container,
+    .col-lg-6-accueil,
+    .box-accueil { 
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .container { 
+      
+        padding: 0;
+    }
+    .box-accueil h1
+    {
+        font-size: 2rem;
+    }
+    #title-header {
+        display: none;
+    }
+}
+
+/*------BTN INSCRIPTION----*/
+.btn-inscription{
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 5px 0;
+    background: #00897b;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
+.btn-inscription:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+
+/*-------'li' box-----*/
+.banner{
+    font-size: 20px;
+}
+.banner:last-child{
+    margin-bottom: 15px;
+}
+
+/*-------------------------------------------FOOTER--------------*/
+
+footer{
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%; 
+    background: rgba(0,0,0,0.8);    
+}
+.footer-conteneur{
+    width: 459px;
+    margin: 0 auto;
+}
+.list-footer{
+    display: inline-block;
+    text-align: center;
+    font-size: 1.7rem;
+    border-right: 1px solid #fff;
+    line-height: 40px;
+    margin: 0 auto;
+    width: 150px;
+}
+
+.list-footer:last-child{
+    border-right: none;
+}
+.footerLink{
+  color: #fff;
+  text-decoration: none;
+}
+
+/* RESPONSIVE FOOTER */
+@media screen and (max-width: 360px){
+    .footer-conteneur{
+        width: 100%;
+    }
+    .list-footer{
+        font-size: 1.4rem;
+        padding: 0 10px;
+    }
+}
+
+/* -------------------- AFFICHAGE DU CV ------------------------*/
+
+.box-resume{
+    width: 700px;
+    padding: 0;
+    margin: 40px auto;
+    box-shadow: 0 0 5px #ccc;
+    font-size: 2rem;
+    line-height: 30px;
+}
+
+.box-resume .row{
+    background: rgba(255, 255, 255, 1);
+}
+
+.box-resume .box-header{
+/*    background: rgba(0, 131, 143, 1); */
+    background: #29aa88;
+    text-align: center;
+    color: #fff;
+}
+
+.box-resume a {
+    font-size: 1.7rem;
+}
+
+.box-header a{
+    margin-top: 10px;
+}
+.trait-bleu{
+    height: 2px;
+    background-color: #5cc2a9;
+}
+.trait-gris{
+    height: 1px;
+    background-color:#ccc;
+}
+
+.resume-title{
+    font-size: 2.4rem;
+    margin: 0;
+}
+.resume-title::before{
+    font-family:'FontAwesome';
+    color: #5cc2a9;
+}
+.resume-title-info-perso{
+    margin-bottom: 15px;
+    color: #fff;
+}
+.resume-title-info-perso::before{
+    content:"\f007";
+    color: #fff;
+}
+/* Icône CV */
+.resume-title-cv::before{
+    content:"\f15c";
+}
+/* Icône formations */
+.resume-title-formations::before{
+    content :"\f19d";
+}
+/* Icône expériences */
+.resume-title-experiences::before{
+    content :"\f0b1";
+}
+/* Icône compétences */
+.resume-title-competences::before{
+    content :"\f109";
+}
+/* Icône langues */
+.resume-title-langues::before{
+    content :"\f1ab";
+}
+/* Icône centres d'intérêt */
+.resume-title-centres-interet::before{
+    content :"\f1b3";
+}
+
+.resume-buttons{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.box-register-resume{
+    text-align: center;
+}
+
+/* RESPONSIVE RENDU CV */
+@media screen and (max-width: 640px){
+    .box-resume{
+        width: 100%;
+    }
+    .resume-title{
+        font-size: 2rem;
+    }
+}
+
+/* FORMULAIRE CV */
+
+.add_block,
+.add_block2{
+    text-align: center;
+}
+
+/* -------- CSS ALEX (page contact + page about-us) --------- */
+
+/*page qui-sommes-nous*/
+.box-principale{
+	width: 1250px;
+	margin: auto;
+}
+.box-principale h1{
+	text-align: center;
+        margin-bottom: 50px;
+        color: #5cc2a9;
+}
+.box-principale figure{
+	margin:0;
+        
+}
+.box-principale .box{
+	display: inline-block;
+	width: 240px;
+	margin-bottom: 4px;
+	margin-right: 4px;
+	border-radius: 4px;
+}
+.box-principale img{
+	display: block;
+        max-width: 70%;
+	border-radius: 70%;
+        margin-left: 35px;
+}
+.box-principale figcaption{
+	text-align: center;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	margin-top: 10px;
+}
+.box-principale p{
+	margin-bottom: 0;
+}
+
+/*media querries pour le responsive*/
+@media only screen and (max-width: 980px) {
+	.box-principale{
+		width: auto;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.box-principale{
+		width: auto;
+	}
+    .box{
+        width: 250px;
+    }
+}
+@media only screen and (max-width: 800px) {
+	.box-principale{
+		width: auto;
+	}
+    .box{
+        width: 250px;
+    }
+
+}
+
+/*page nous-contacter*/
+
+.box-principale h1{
+	font-weight: 100;
+	text-align: center;
+
+}
+.form-contact{
+	width: 800px;
+	border:solid 1px #ccc;
+	background: #fafafa;
+	padding:10px;
+	box-shadow: 0 0 5px #ccc;
+	margin: 40px auto;
+}
+.form-contact fieldset{
+	border:0;
+}
+.form-contact legend{
+	font-weight: bold;
+	display:inline-block;
+	padding-bottom: 5px;
+	color:#80cbc4;
+}
+.form-contact label{
+	display:block;
+	float: left;
+	clear:both;
+	width: 190px;
+	margin:0 0 10px 0;
+	padding: 10px;
+}
+
+.form-contact input{
+	display: inline-block;
+	width: 500px;
+	margin:0 0 10px 0;
+	padding:10px;
+	border: solid 1px #ccc;
+}
+.form-contact [placeholder]{
+	font-size: 1rem;
+	font-style: italic;
+	transition-duration:0.5s;
+}
+.form-contact [placeholder]:focus{
+	box-shadow:0 0 4px #e91e63;
+	background: #fce4ec;
+}
+
+.form-contact textarea{
+	display:inline-block;
+	resize:none;
+	border: solid 1px #ccc;
+	width: 500px;
+}
+
+.form-contact input[type="submit"]{
+	display:block;
+	margin:30px auto 0;
+	border:0;
+	background: #2196f3;
+	color:#fff;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.form-contact{
+		width: auto;
+		margin: 10px;
+	}
+	.form-contact fieldset{
+		margin:0;
+	}
+	.form-contact input{
+		width: 300px;
+	}
+	.form-contact textarea{
+		width: 300Px;
+	}
+
+}
+
+
+/*----------------------ESPACE RECRUTEUR-----------*/
+#espace_recruteur{
+    margin-top: 5%;
+    margin-left: 30%;
+    width: 45%;
+    height:50px;
+    line-height: 50px;
+    background: #fff;
+    text-align: center;
+    
+     
+}
+.recruteur_token, p, .underlined{
+    color: #fff;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    height: 45%;
+    
+}
+.box-token{
+    width: 100%;
+    height: 250px;
+    background: #5cc2a9;
+    opacity: 0.8;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.5em;
+    padding: 10PX 30px;
+    margin: auto;
+}
+.underlined{
+    text-decoration: underline;
+    font-size: 1.2em;
+}
+#searchBar{
+    width: 100%;
+    height: 90px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+   
+}
+#searchInputField{
+    width: 75%;
+    padding:5px 10px;
+    margin:10px;
+    
+}
+
+
+/*************  PAGE ACHATS DE JETONS  ***************/
+
+.title_token{
+    margin: 50px 0 0 0 ;
+    padding: 0 0 0 0;
+}
+
+.formule{
+    width: 45%;
+    margin: 0 auto;
+}
+
+.formule .formule_title{
+    text-align: center;
+}
+
+.formule .form_formule{
+    padding: 10px;
+    margin: 0;
+    width: 95%;
+}
+
+.form_formule .formule_paragraphe{
+    padding: 10px 10px 20px 10px;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+/*********************************************************/
+

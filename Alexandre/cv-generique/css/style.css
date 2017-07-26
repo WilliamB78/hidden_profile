@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+
+body{
+	font:16px 'Open Sans',sans-serif;
+	margin:0;
+}
+.main-box{
+	width: 800px;
+	border: solid 1px black;
+	margin: auto;
+	color: white;
+	vertical-align: middle;
+}
+.box-header{
+	background-color:#80cbc4;
+}	
+.header-picture{
+	display: inline-block;
+
+}
+img{
+	border-radius: 100%;
+	display: block;
+	max-width: 100%;
+}
+.box-header-left{
+	display: inline-block;
+	width: 20%;
+	margin-left: 2%;
+
+}
+.box-header-right{
+	display: inline-block;
+	width: 70%;
+	margin-left: 2%;
+}
+
+/* début du bloc contact et formation */
+.box-content1{
+	margin-top: 20px;
+	margin-left: 2%;
+}
+.trait{
+	height: 2px;
+	width: 95%;
+	background-color:#80cbc4;
+	display: inline-block;
+}
+.box-contact p::before{
+	font-family:'FontAwesome';
+	content:"\f007";
+	color:#80cbc4;
+}
+.box-formation p::before{
+	font-family:'FontAwesome';
+	content :"\f19d";
+	color:#80cbc4;
+}
+.box-contact,.box-formation{
+	display: inline-block;
+	color: black;
+	width: 49.5%;
+	vertical-align: top;
+}
+.box-contact p{
+	margin-bottom: 0;
+}
+ul{
+	padding:0;
+}
+li{
+	list-style: none;
+}
+.box-contact-left,.box-contact-right,.box-formation-left,.box-formation-right{
+	display: inline-block;
+	vertical-align: top;
+}
+.box-contact-right,.box-formation-right{
+	margin-left:2%;
+}
+.box-formation p{
+	margin-bottom: 0;
+}
+/*début bloc expériences professionnelles*/
+.box-content2{
+	margin-left: 2%;
+}
+.box-content2 p{
+	color: black;
+}
+.box-content2>p::before{
+	font-family:'FontAwesome';
+	content :"\f0b1";
+	color:#80cbc4;
+}
+.box-content2 .trait{
+	width: 97.5%;
+}
+.box-content2{
+	vertical-align: top;
+}
+.box-content2 p{
+	margin-bottom: 0;
+}
+.box-content2 .experience1>p{
+	color: #80cbc4;
+}
+.responsabilites{
+	display: inline-block;
+	width: 47.5%;
+
+}
+.resultats{
+	display: inline-block;
+	width: 47.5%;
+	margin-left: 2%;
+}
+/*début bloc compétences et formation*/
+.box-content3{
+	color: black;
+	margin-top: 20px;
+	margin-left: 2%;
+}
+.box-competences>p,.box-langues>p{
+	margin-bottom: 0;
+}
+.box-competences>p::before{
+	font-family:'FontAwesome';
+	content :"\f109";
+	color:#80cbc4;
+}
+
+.box-competences,.box-langues{
+	display: inline-block;
+	color: black;
+	width: 49.5%;
+	vertical-align: top;
+}
+.box-competences-left,.box-competences-right,.box-langues-left,.box-langues-right{
+	display: inline-block;
+	vertical-align: top;
+}
+.box-langues>p::before{
+	font-family:'FontAwesome';
+	content :"\f1ab";
+	color:#80cbc4;
+}
+
+

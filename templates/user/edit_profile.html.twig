@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title '' %}
+    
+    
+{% block content %}
+    
+    <form method="post">
+        <h3>Vos informations</h3>
+        
+        <div class="form-group">
+            <label>Nom</label>  
+            <input id="name" name="lastname" placeholder="Votre nom" class="form-control" type="text" value="{{ user.lastname }}">
+        </div>
+
+        <div class="form-group">
+            <label>Prénom</label>  
+            <input id="name" name="firstname" placeholder="" class="form-control" type="text" value="{{ user.firstname }}">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>  
+            <input id="email" name="email" placeholder="Votre email" class="form-control" type="text" value="{{ user.email }}">
+        </div>
+
+        <div class="form-group">
+          <label>Confirmation de l'email</label>  
+          <input id="email" name="email_confirm" placeholder="Confirmation de votre email" class="form-control" type="text">
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label>Ancien mot de passe</label>
+            <input id="old_password" name="old_password" placeholder="" class="form-control" type="password">
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label>Nouveau mot de passe</label>
+            <input id="new_password" name="new_password" placeholder="" class="form-control" type="password">
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label>Numéro de téléphone</label>  
+          <input id="telephone" name="telephone" placeholder="" class="form-control" type="text" value="{{ user.telephone }}">
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label>Code postal</label>  
+          <input id="postcode" name="postcode" placeholder="Votre code postal" class="form-control" type="text" value="{{ user.postcode }}">
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-submit">Valider les modifications</button>
+        <a href="{{ path('user_dashboard') }}" class="btn btn-default btn-annuler">Annuler</a>
+    </form>
+    
+{% endblock %}

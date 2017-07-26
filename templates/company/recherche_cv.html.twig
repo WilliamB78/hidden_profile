@@ -1,0 +1,109 @@
+{# empty Twig template #}
+{% extends 'layout.html.twig' %}
+
+{% block title 'Recherche de CV' %}
+
+{% block content %}
+    
+    <form  method="get">
+    <fieldset>
+
+
+    <!-- Text input-->
+      <div class="form-group">
+      <label  for="titre_poste">Titre de poste</label>  
+      
+      <input id="titre_poste" name="titre_poste" class="form-control input-md" type="text" value="{% if get is defined %}{{ get.titre_poste }}{% endif %}" >
+
+     
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label  for="annees_experience">Années d'experience </label>  
+
+      <input id="annees_experience" name="annees_experience" placeholder="" class="form-control input-md" type="text">
+
+
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label for="lieu">Lieu </label>  
+
+      <input id="lieu" name="lieu" class="form-control input-md" type="text">
+
+
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label for="competences">Compétences </label>  
+
+      <input id="competences" name="competences" class="form-control input-md" type="text">
+
+
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label  for="fraicheur">Fraicheur du CV </label>
+
+        <select id="fraicheur" name="fraicheur" class="form-control">
+          <option value="1">Option one</option>
+          <option value="2">Option two</option>
+        </select>
+
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label  for="singlebutton"></label>
+
+        <button id="singlebutton" class="btn btn-primary">Rechercher</button>
+
+    </div>
+
+    </fieldset>
+    </form>
+    {% if resumes is defined %}
+        {% for resume in resumes %}
+        
+            <div class="panel panel-default">
+            <div class="panel-body">
+                <p>{{ resume.desiredJob }}</p><br>
+                <p>Domaine d'activités : {{ resume.professionnalDomain }}</p>
+                <p>Type de contrat recherché : {{ resume.contractType }}</p>
+                <p>Années d'expérience : {{ resume.yearOfExperience }}</p>
+                <p>Last Job : {{ resume.jobName }}</p>
+                <p>Last Diploma : {{ resume.name }}</p>
+                <a href="{{ path('company_show_resume', {reference : resume.reference }) }}" class="btn btn-default" target="_blank">Consulter <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>  <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span></button>
+
+            </div>
+          </div>
+            <br>
+        
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script>
+        $(function(){
+            //alert('ok');
+            $('.favori-btn').click(function(e){
+                e.preventDefault();
+                let ref = $('.favori-btn').attr('reference');
+                let url = "ajout_favori/" + ref;
+                $.post(url, function (response){
+                $('#star' + ref).css('color', 'orange');
+              });
+            });
+    
+        });
+    </script>
+    
+{% endblock %}

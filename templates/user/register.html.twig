@@ -1,0 +1,55 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <!--INSCRIPTION CANDIDAT-->
+    <form method="post">
+        <h3>INSCRIPTION CANDIDAT</h3>
+        <p><span class="red-star">*</span> Champs obligatoires</p>
+        <br>
+        <div class="form-group">
+            <label for="lastname">Nom <span class="red-star">*</span></label>
+            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Votre nom">
+        </div>
+
+        <div class="form-group">
+            <label for="firstname">Prénom <span class="red-star">*</span></label>
+            <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Votre prénom">
+        </div>
+
+        <div class="form-group">
+            <label for="postcode">Code postal <span class="red-star">*</span></label>
+            <input type="text" name="postcode" class="form-control" id="codepost" placeholder="Votre code postal">
+        </div>
+
+        <div class="form-group">
+            <label for="telephone">Téléphone <span class="red-star">*</span></label>
+            <input type="text" name="telephone" class="form-control" id="telephone">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email <span class="red-star">*</span></label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="votre email">
+        </div>
+
+        <div class="form-group">
+            <label for="email_confirm">Confirmation de l'email <span class="red-star">*</span></label>
+            <input type="email" class="form-control" name="email_confirm" id="email_confirm" placeholder="Confirmer votre email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe <span class="red-star">*</span></label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Votre Mot de passe">
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirm">Confirmation du mot de passe <span class="red-star">*</span></label>
+            <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="Confirmer Mot de passe">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-submit">VALIDER</button>
+        </div>
+    </form>
+   
+{% endblock %}

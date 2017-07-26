@@ -1,0 +1,86 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Inscription Entreprise' %}
+
+{% block content  %}
+    <!-- INSCRIPTION ENTREPRISE -->
+    <form method='post'>
+        <h3>INSCRIPTION ENTREPRISE</h3>
+        
+        <p><span class="red-star">*</span> Champs obligatoires</p>
+        <br>
+        <div class="form-group">
+            <label>Nom de l'entreprise <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="name" id="companyName" value="{% if post is not empty %}{{ post.name }}{% endif %}">
+        </div>
+
+        <div class="form-group">
+          <label>Adresse de l'entreprise <span class="red-star">*</span></label>
+          <input type="text" class="form-control" name="address" id="adresseEntreprise">  
+        </div>
+
+        <div class="form-group">
+            <labeL>Ville <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="city" id="ville" placeholder="Paris">
+        </div>
+
+        <div class="form-group">
+            <label>Code postal <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="postcode" id="postcode" placeholder="75000">    
+        </div>
+
+        <div class="form-group">
+            <label>Pays <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="country" id="pays" placeholder="France">
+        </div>
+
+        <div class="form-group">
+            <label>Téléphone professionnel <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="telephone" id="telProfessionnel">    
+        </div>
+
+        <div class="form-group">
+            <label>Numéro SIRET <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="siret" id="numeroSiret">    
+        </div>
+
+        <div class="form-group">
+            <label>Numéro TVA <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="tva_nb" id="tva_nb">
+        </div>
+
+        <div class="form-group">
+            <label>Secteur d'activité <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="activity_area" id="SecteurActivite">
+        </div>
+
+        <div class="form-group">
+            <label>Effectif <span class="red-star">*</span></label>
+            <input type="text" class="form-control" name="employes_nb" id="effectif">
+        </div>
+
+        <div class="form-group">
+            <label>Email <span class="red-star">*</span></label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="votre email">
+        </div>
+
+        <div class="form-group">
+            <label>Confirmation de l'email <span class="red-star">*</span></label>
+            <input type="email" class="form-control" name="email_confirm" id="email_confirm" aria-describedby="emailHelp" placeholder="Confirmer votre email">
+        </div>
+
+        <div class="form-group">
+            <label>Mot de passe <span class="red-star">*</span></label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Votre Mot de passe">
+        </div>
+
+        <div class="form-group">
+            <label>Confirmation du mot de passe <span class="red-star">*</span></label>
+            <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="Confirmer Mot de passe">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-submit">ENREGISTRER</button>
+        </div>
+    </form>
+{% endblock %}

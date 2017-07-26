@@ -1,0 +1,81 @@
+body{
+	font: 16px sans-serif;
+	margin:0;
+	background-color: #80cbc4;
+}
+h1{
+	font-weight: 100;
+	text-align: center;
+}
+*{
+	box-sizing: border-box;
+}
+.form{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-300px 0 0 -400px;
+	width: 800px;
+	border:solid 1px #ccc;
+	background: #fafafa;
+	padding:10px;
+	box-shadow: 0 0 5px #ccc;
+}
+fieldset{
+	border:0;
+}
+legend{
+	font-weight: bold;
+	display:inline-block;
+	padding-bottom: 5px;
+	color:#80cbc4;
+}
+label{
+	display:block;
+	float: left;
+	clear:both;
+	width: 190px;
+	margin:0 0 10px 0;
+	padding: 10px;
+}
+#largeur{
+	width: auto;
+}
+input{
+	display: inline-block;
+	width: 500px;
+	margin:0 0 10px 0;
+	padding:10px;
+	border: solid 1px #ccc;
+}
+[placeholder]{
+	font-size: 1rem;
+	font-style: italic;
+	transition-duration:0.5s;
+}
+[placeholder]:focus{
+	box-shadow:0 0 4px #e91e63;
+	background: #fce4ec;
+}
+input[type="radio"]{
+	float:none;
+	width: auto;
+}
+textarea{
+	display:inline-block;
+	width: 100%;
+	resize:none;
+	border: solid 1px #ccc;
+}
+/*Display none afin d'utiliser la fonction JQuery slideUp SlideDown*/
+
+input[type="submit"]{
+	display:block;
+	margin:30px auto 0;
+	border:0;
+	background: #2196f3;
+	color:#fff;
+	cursor: pointer;
+	font-size: 1rem;
+}
+

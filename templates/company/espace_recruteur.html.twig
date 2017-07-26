@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Espace recruteur' %}
+
+{% block content %}
+
+    <h1 id="espace_recruteur">ESPACE RECRUTEUR</h1>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+                <form id="searchBar" method="get" action="{{ path('company_resume_search') }}">
+                    <label>Recherche</label>
+                    <input id="searchInputField" type="text" name="titre_poste" placeholder="métiers, mots-clés">
+                    <button id="searchBtn" class="btn-primary" type="submit">Envoyer</button>
+                </form>
+         </div>  
+    </div>
+    
+    <div class="row">
+        
+        <div class="col-lg-4 col-sm-6 col-xs-12 recruteur_token">
+            <div class="box-token">
+                <h3>VOS INFORMATIONS</h3><hr/>
+                <ul>
+                    <li><a class="underlined" href="{{ path('company_edit_profile') }}">Modifier vos informations</a></li>
+                    <li><a class="underlined">Recherche de CV</a><li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6 col-xs-12 recruteur_token">
+            <div class="box-token">
+                <h3>VOS JETONS</h3><hr/>
+                <ul>                
+                    <li>Vous avez {{ tokens }} jeton(s){% if tokens > 1 %}s{% endif %}.</li>
+                    <li><a class="underlined" href="{{ path('order_tokens') }}">Acheter des jetons</a></li>
+                </ul>
+            </div>
+        </div> 
+                    
+        <div class="col-lg-4 col-sm-6 col-xs-12 recruteur_token">
+            <div class="box-token">
+                <h3>VOS COMMANDES</h3><hr/>
+                <ul>
+                    <li><a class="underlined" href="{{ path('orders_history') }}">Consulter votre historique de commande</a></li>
+                    <li><a class="underlined" href="{{ path('company_favorites_resumes') }}">Consulter les CV que vous avez mis de côté</a></li>
+                </ul>
+            </div>
+        </div>    
+    </div>   
+       
+            
+    
+                            
+   
+
+    
+{% endblock %}

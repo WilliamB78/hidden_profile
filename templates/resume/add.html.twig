@@ -1,0 +1,163 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <form method="post" class="form-resume">
+        <h3>AJOUTER VOTRE CV</h3>
+        
+        <p><span class="red-star">*</span> Champs obligatoires</p>
+        <br>
+        <div class="form-group">
+            <label>Domaine professionnel <span class="red-star">*</span></label>
+            <select name="professionnal_domain" class="form-control">
+                <option value="">Choisir le domaine professionnel</option>
+                <option value="informatique">Informatique</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Poste recherché <span class="red-star">*</span></label>
+            <input type="text" name="desired_job" class="form-control" placeholder="Poste recherché">
+        </div>
+
+        <div class="form-group">
+            <label>Type de contrat recherché <span class="red-star">*</span></label>
+            <select name="contract_type" class="form-control">
+                <option value="">Choisir un contrat</option>
+                <option value="cdi">CDI</option>
+                <option value="cdd">CDD</option>
+                <option value="stage">Stage</option>
+            </select>
+        </div>
+        
+        <h2 class="resume-title resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h2>
+
+        <div class="bloc_experience">
+            <input type="hidden" name="nb_of_experiences[]">
+
+            <div class="form-group">
+                <label>Nom du poste <span class="red-star">*</span></label>
+                <input type="text" name="job_name[]" class="form-control" placeholder="Nom du poste">
+            </div>
+
+            <div class="form-group">
+                <label>Nombre d'années <span class="red-star">*</span></label>
+                <select name="year_of_experience[]" class="form-control">
+                    <option value="">Choisir le niveau</option>
+                    <option value="1">1 an</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sociétés <span class="red-star">*</span></label>
+                <input type="text" name="companies[]" class="form-control" placeholder="Sociétés">
+            </div>
+
+            <div class="form-group">
+                <label>Responsabilités <span class="red-star">*</span></label>
+                <textarea name="description[]" class="form-control" rows="3"></textarea>
+            </div>
+            
+            <div class="col-md-12">
+                <hr class="trait-gris">
+            </div>
+        </div>
+        
+        <div class='add_experience'></div>
+
+        <a href='' class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a><br>
+
+        <h2 class="resume-title resume-title-formations"> Formations</h2>
+
+        <div class='bloc_formation'>
+            <input type="hidden" name="nb_of_studies[]">
+
+            <div class="form-group">
+                <label>Nom de la formation <span class="red-star">*</span></label>
+                <input type="text" name="name[]" class="form-control" placeholder="Nom de la formation">
+            </div>
+
+                <div class="form-group">
+                <label>Niveau <span class="red-star">*</span></label>
+                <select name="level[]" class="form-control">
+                    <option value="">Choisir le niveau</option>
+                    <option value="bac+5">Bac +5</option>
+                    <option value="bac+3">Bac +3</option>
+                </select>
+            </div>
+            
+            <div class="col-md-12">
+                <hr class="trait-gris">
+            </div>
+        </div>
+        
+        <div class='add_formation'></div>
+        <a href='' class="add_bloc_formation">+ Ajouter une formation +</a><br>
+
+        <h2 class="resume-title resume-title-competences"> Compétences</h2>
+
+        <div class="form-group">
+            <label>Compétences <span class="red-star">*</span></label>
+            <textarea name="skills" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Informatique <span class="red-star">*</span></label>
+            <input type="text" name="informatique" value="{% if post is not empty %}{{ post.informatique }}{% endif %}" class="form-control">
+        </div>
+
+        <h2 class="resume-title resume-title-langues"> Langues</h2>
+        
+        <div class="bloc_langue">
+            <input type="hidden" name="nb_of_languages[]">
+            
+            <div class="form-group">
+                <label>Sélectionnez un langue <span class="red-star">*</span></label>
+                <select name="language_select[]" class="form-control">
+                    <option value="">Choisir une langue</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="espagnol">Espagnol</option>
+                    <option value="allemand">Allemand</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Sélectionnez votre niveau <span class="red-star">*</span></label>
+                <select name="language_level[]" class="form-control">
+                    <option value="">Votre niveau</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="bon">Bon</option>
+                    <option value="courant">Courant</option>
+                </select>
+            </div>
+            
+            <div class="col-md-12">
+                <hr class="trait-gris">
+            </div>
+        </div><!-- Fin bloc_langues -->
+        
+        <div class='add_langue'></div>
+        <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br>
+
+        <h2 class="resume-title resume-title-centres-interet"> Centres d'intérêt</h2>
+
+        <div class="form-group">
+            <label>Centres d'intérêts <span class="red-star">*</span></label>
+            <textarea name="hobbies" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">
+            Enregistrer
+        </button>
+
+        <a href="{{ path('user_dashboard') }}" class="btn btn-primary btn-annuler">
+            Annuler
+        </a>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }} {# reprend le contenu du bloc qu'on surcharge #}
+    {# permet d'ajouter des choses plutôt que de les remplacer #}
+   <script type="text/javascript" src="{{ asset('js/add_block_resume.js') }}"></script>
+{% endblock %}

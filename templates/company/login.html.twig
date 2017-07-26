@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Espace Rectruteur' %}
+    
+{% block content %}
+    <form method="post">
+        <h3 id="connect">CONNEXION ENTREPRISE</h3>
+        <div class="form-group">
+            <label for="email1">Email</label>
+            <input type="email" class="form-control" name="email" id="email1" placeholder="votre email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Votre Mot de passe">
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">Vous avez oublié votre mot de passe ? <a href="">Cliquez-ici</a></label>
+        </div>
+            <button type="submit" class="btn btn-primary btn-submit">VALIDER</button>
+    </form>
+{% endblock %}

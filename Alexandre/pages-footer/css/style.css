@@ -1,0 +1,150 @@
+
+/*page qui-sommes-nous*/
+
+*{
+	box-sizing: border-box;
+}
+.box-principale{
+	width: 1250px;
+	margin: auto;
+}
+h1{
+	text-align: center;
+}
+figure{
+	margin:0;
+}
+.box{
+	display: inline-block;
+	width: 240px;
+	margin-bottom: 4px;
+	margin-right: 4px;
+	border-radius: 4px;
+}
+img{
+	display: block;
+	max-width: 100%;
+	border-radius: 100%;
+}
+figcaption{
+	text-align: center;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	margin-top: 10px;
+}
+p{
+	margin-bottom: 0;
+}
+
+/*media querries pour le responsive*/
+@media only screen and (max-width: 980px) {
+	.box-principale{
+		width: auto;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.box-principale{
+		width: auto;
+	}
+    .box{
+        width: 250px;
+    }
+}
+@media only screen and (max-width: 800px) {
+	.box-principale{
+		width: auto;
+	}
+    .box{
+        width: 250px;
+    }
+
+}
+
+/*page nous-contacter*/
+
+h1{
+	font-weight: 100;
+	text-align: center;
+
+}
+*{
+	box-sizing: border-box;
+}
+.form{
+	width: 800px;
+	border:solid 1px #ccc;
+	background: #fafafa;
+	padding:10px;
+	box-shadow: 0 0 5px #ccc;
+	margin: 40px auto;
+}
+fieldset{
+	border:0;
+}
+legend{
+	font-weight: bold;
+	display:inline-block;
+	padding-bottom: 5px;
+	color:#80cbc4;
+}
+label{
+	display:block;
+	float: left;
+	clear:both;
+	width: 190px;
+	margin:0 0 10px 0;
+	padding: 10px;
+}
+
+input{
+	display: inline-block;
+	width: 500px;
+	margin:0 0 10px 0;
+	padding:10px;
+	border: solid 1px #ccc;
+}
+[placeholder]{
+	font-size: 1rem;
+	font-style: italic;
+	transition-duration:0.5s;
+}
+[placeholder]:focus{
+	box-shadow:0 0 4px #e91e63;
+	background: #fce4ec;
+}
+
+textarea{
+	display:inline-block;
+	resize:none;
+	border: solid 1px #ccc;
+	width: 500px;
+}
+
+input[type="submit"]{
+	display:block;
+	margin:30px auto 0;
+	border:0;
+	background: #2196f3;
+	color:#fff;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.form{
+		width: auto;
+		margin: 10px;
+	}
+	fieldset{
+		margin:0;
+	}
+	input{
+		width: 300px;
+	}
+	textarea{
+		width: 300Px;
+	}
+
+}

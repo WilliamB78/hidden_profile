@@ -1,0 +1,113 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Edition profil Recruteur' %}
+    
+    
+{% block content %}
+    
+
+    <form method="post">
+
+        <h2>Modifier les informations de votre compte</h2>
+<!-- Text input-->
+<div class="form-group">
+  <label for="name">Raison Sociale</label>  
+  <input id="name" name="name" placeholder="" class="form-control input-md" type="text" value="{{ company.name }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="email">Email</label>  
+  <input id="email" name="email" placeholder="" class="form-control input-md" type="text" value="{{ company.email }}">
+    
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label  for="old_password">Ancien Password</label>
+    <input id="old_password" name="old_password" placeholder="" class="form-control input-md" type="password">
+    
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label for="new_password">Nouveau Password</label>
+    <input id="new_password" name="new_password" placeholder="" class="form-control input-md" type="password">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="siret">N° SIRET</label>  
+  <input id="siret" name="siret" placeholder="" class="form-control input-md" type="text" value="{{ company.siret }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="tva_nb">N° TVA Intracommunautaire</label>  
+  <input id="tva_nb" name="tva_nb" placeholder="" class="form-control input-md" type="text" value="{{ company.tvaNb }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="telephone">Téléphone</label>  
+  <input id="telephone" name="telephone" placeholder="" class="form-control input-md" type="text" value="{{ company.telephone }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="address">Adresse</label>  
+  <input id="address" name="address" placeholder="" class="form-control input-md" type="text" value="{{ company.address }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="postcode">Code Postal</label>  
+  <input id="postcode" name="postcode" placeholder="" class="form-control input-md" type="text" value="{{ company.postcode }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="city">Ville</label>  
+  <input id="city" name="city" class="form-control input-md" type="text" value="{{ company.city }}">
+    
+</div>
+  
+<!-- Text input-->
+<div class="form-group">
+  <label for="country">Pays</label>  
+  <input id="country" name="country" placeholder="" class="form-control input-md" type="text" value="{{ company.country }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="activity_area">Domaine d'activités</label>  
+  <input id="activity_area" name="activity_area" placeholder="" class="form-control input-md" type="text" value="{{ company.activityArea }}">
+    
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="employes_nb">Nombre d'employés</label>  
+  <input id="emplyes_nb" name="employes_nb" placeholder="" class="form-control input-md" type="text" value="{{ company.employesNb }}">
+    
+</div>
+
+  <!-- Button -->
+<div class="form-group">
+  <label  for="singlebutton"></label>
+    <button class="btn btn-primary" type="submit">Modifier</button>
+    <a class="btn btn-default" href="{{ path('company_dashboard') }}">Annuler</a>
+</div>
+  
+</form>
+
+    
+{% endblock %}

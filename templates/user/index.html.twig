@@ -1,0 +1,156 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<div class="box-resume">
+    {# <p>Votre CV a été vu X fois.</p> <= À faire pour plus tard #}
+
+    {# box-header contient les infos de l'utilisateur #}
+    {# c'est cette div qu'il faudra 'cacher' aux entreprises #}
+
+    <!-- BLOC INFO PERSONNELLES -->
+    <div class="row box-header">
+        <div class="col-md-12">
+            <h3 class="resume-title" id="resume-title-info-perso"> INFORMATIONS PERSONNELLES</h3>
+            <ul>
+                <li>{{ user.firstname }} {{ user.lastname|upper }}</li>
+
+                <li><em>Email</em> :  {{ user.email }}</li>
+                <li><em>T&eacute;l&eacute;phone</em> : {{ user.telephone }}</li>
+                <li><em>Code postal</em> : {{ user.postcode }}</li>
+            </ul>
+        </div>
+        <a href="{{ path('user_edit_profile') }}" class="btn btn-default">Modifier vos informations personnelles</a>
+    </div>
+
+    {# Si resume n'est pas null et si l'id de l'utilisateur est égale à user_id de la table resume #}
+    {# => cela signifie que l'utilisateur a déjà enregistré son CV #}
+    {% if resume and user.id == resume.userId %}
+
+        {# On affiche le rendu du CV et les boutons de modifications #}
+
+        {# Rendu du CV #}
+        {#{% include 'resume/resume_display.html.twig' %}  Inclusion du fichier de l'affichage standard du CV #}
+
+        <!-- BLOC CV -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="resume-title" id="resume-title-cv"> CV - {{ resume.reference }}</h3>
+                <hr class="trait-bleu">
+                <ul>
+                    <li><em>Domaine professionnel</em> :  {{ resume.professionnalDomain }}</li>
+                    <li><em>M&eacute;tier recherch&eacute;</em> : {{ resume.desiredJob }}</li>
+                    <li><em>Type de contrat recherch&eacute;</em> : {{ resume.contractType }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BLOC FORMATIONS -->
+        <div class="row">
+            <h3 class="resume-title" id="resume-title-formations"> FORMATIONS</h3>
+
+            <hr class="trait-bleu">
+
+            {# Affiche toutes les formations de l'utilisateur #}
+            {% for study in studies %}
+                <div class="col-md-4">
+                    <ul>
+                        <li>{{ study.name }}</li>
+                    </ul>		
+                </div>
+                <div class="col-md-8">
+                    <ul>
+                        <li>{{ study.level }}</li>
+                    </ul>
+                </div>
+                    
+                {% if not loop.last %}
+                    <div class="col-md-12">
+                        <hr class="trait-gris">
+                    </div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+
+        <!-- BLOC EXPERIENCES PROFESSIONNELLES -->
+        <div class="row">
+            <h3 class="resume-title" id="resume-title-experiences"> EXPERIENCES PROFESSIONNELLES</h3>
+
+            <hr class="trait-bleu">
+
+            {# Affiche toutes les expériences professionnelles de l'utilisateur #}
+            {% for experience in experiences %}
+                <div class="col-md-12">
+                    <p><strong>{{ experience.jobName }}</strong> - {{ experience.yearOfExperience }} an(s) d'expérience</p>
+                    <p><em>Entreprises</em> : {{ experience.companies }}</p>
+                    <p><em>Tâches</em> :</p>
+                    <p>{{ experience.description }}</p>
+                </div>
+                
+                {% if not loop.last %}
+                    <div class="col-md-12">
+                            <hr class="trait-gris">
+                    </div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>	
+
+        <!-- BLOC COMPETENCES -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="resume-title" id="resume-title-centres-interet"> COMPETENCES</h3>
+                
+                <hr class="trait-bleu">
+                
+                <p>{{ skills.skills }}</p>
+            </div>
+        </div>
+
+        <!-- BLOC LANGUES + CENTRES D'INTERET-->
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="resume-title" id="resume-title-langues"> LANGUES</h3>
+                <hr class="trait-bleu">
+                <ul>
+                    <li>Langue : {{ skills.languageSelect }}</li>
+                </ul>
+                <ul>
+                    <li>Niveau : {{ skills.languageLevel }}</li>
+                </ul>
+            </div>
+                
+            <div class="col-md-6">
+                <h3 class="resume-title" id="resume-title-competences"> CENTRES D'INTERET</h3>
+
+                <hr class="trait-bleu">
+
+                <p>{{ resume.hobbies }}</p>
+            </div>
+        </div>
+
+        <!-- BLOC BOUTONS DE MODIFICATION/SUPPRESSION DU CV -->
+        <div class="row">
+            <div class="resume-buttons">
+                <a href="{{ path('resume_edit', {id: user.id}) }}" class="btn btn-default">Modifier votre CV</a>
+
+                <a href="" class="btn btn-default">Supprimer votre CV</a>
+            </div>
+        </div>
+            
+    {# Sinon, l'utilisateur n'a pas encore enregistré son CV.... #}
+    {% else %}
+        
+        <div class="row box-register-resume">
+            <p>Vous n'avez pas enregistré votre CV.</p>
+            
+            {# On affiche le bouton pour que l'utilisateur ajoute son CV. #}
+            <a href="{{ path('resume_edit') }}" class="btn btn-default">
+                Ajouter votre CV
+            </a>
+        </div>
+        
+    {% endif %}
+</div>
+    
+{% endblock %}
