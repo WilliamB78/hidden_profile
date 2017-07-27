@@ -81,4 +81,9 @@ EOS;
     {
         $this->db->delete('language', ['user_id' => $userId]);
     }
+    
+    public function deleteByLanguageId($languageId)
+    {
+        $this->db->delete('language', ['id' => $languageId]);
+    }
 }

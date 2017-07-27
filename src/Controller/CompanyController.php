@@ -271,6 +271,8 @@ class CompanyController extends ControllerAbstract{
             if (empty($errors)){
                 $this->app['company.repository']->save($companyTwo);
                 $this->app['company.manager']->login($companyTwo);
+                
+                 return $this->redirectRoute('company_dashboard');
             } else {
                 $msg = '<strong>Le formulaire contient des erreurs</strong>';
                 $msg .= '<br>' . implode('<br>', $errors);
@@ -423,7 +425,7 @@ class CompanyController extends ControllerAbstract{
                 ->setReference($reference)
                 ;
         
-        $idFavorite = $this->app['favorite.repository']->findByIdCompanyAndIdResume($idCompany, $idResume);
+        $idFavorite = $this->app['favorite.repository']->findByIdCompanyAndIdResume($idCompany, $resumeInfos['id']);
                        
         if ($idFavorite == ""){
             $this->app['favorite.repository']->save($favorite);

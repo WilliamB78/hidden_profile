@@ -2,9 +2,13 @@
 
 {% block content %}
     <form method="post" class="form-resume">
-        <h3>MODIFIER VOTRE CV</h3>
-
-        <p><span class="red-star">*</span> Champs obligatoires</p>
+        <h3>
+            {% if resume.id is empty %}
+            AJOUTER
+        {% else %}
+            MODIFIER
+        {% endif %} VOTRE CV
+        </h3>
 
         <label>Domaine professionnel</label>
         <select name="professionnal_domain" class="form-control">
@@ -56,7 +60,7 @@
             <option value="stage" {% if resume.contractType == 'stage' %}selected{% endif %}>Stage</option>
         </select>
 
-        <h2 class="resume-title resume-title-experiences inner-header"> EXPERIENCES PROFESSIONNELLES</h2>
+        <h2 class="resume-title resume-title-experiences inner-header"> EXPERIENCES PROFESSIONNELLES <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
         
         <div class="accordeon">
             {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_experience pour chaque formation #}
@@ -70,14 +74,15 @@
                     <br>
 
                     <label>Société(s)</label>
-                    <input type="text" name="companies[]" value="{{ experience.companies }}" class="form-control" placeholder="Sociétés">
+                    <input type="text" name="companies[]" value="{{ experience.companies }}" class="form-control" placeholder="Sociétés dans lesquelles vous avez occupé ce poste">
 
                     <br>
 
                     <label>Description de vos responsabilités</label>
-                    <textarea name="description[]" class="form-control" rows="3" placeholder="Liste de vos responsabilités :
-                              - Responsabilité 1
-                              - Responsabilité 2">{{ experience.description }}</textarea>
+                    <textarea name="description[]" class="form-control"rows="4" placeholder="Liste de vos responsabilités :
+- Responsabilité 1
+- Responsabilité 2
+- ...">{{ experience.description }}</textarea>
 
                     <br>
 
@@ -94,7 +99,7 @@
                     
                     <br>
         
-                     <button class="btn btn-danger button_remove" type="button">Supprimer</button>
+                     <button class="btn btn-danger button_remove_experience" type="button">Supprimer</button>
         
                     <br>
 
@@ -106,17 +111,15 @@
 
             {% endfor %}
 
-            <div class='add_experience'></div>
-
             <a href="" class="add_bloc_experience">+ Ajouter une expérience professionnelle +</a>
         </div> {# Fin accordeon experiences #}
 
-        <h2 class="resume-title resume-title-formations inner-header"> FORMATIONS</h2>
+        <h2 class="resume-title resume-title-formations inner-header"> FORMATIONS <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
 
         <div class="accordeon">
             {# Si l'utilisateur à enregistré plusieurs formations, on génère une div block_study pour chaque formation #}
             {% for study in studies %}
-                <div class="bloc_formation">
+                <div class="bloc_formation" database_id="{{ study.id }}">
                     <input type="hidden" name="nb_of_studies[]">
 
                     <label>Nom de la formation</label>
@@ -132,7 +135,13 @@
                         <option value="bac+3" {% if study.level == 'bac+3' %}selected{% endif %}>Bac +3 (ou équivalent)</option>
                         <option value="bac+2" {% if study.level == 'bac+2' %}selected{% endif %}>Bac +2 (ou équivalent)</option>
                         <option value="bac" {% if study.level == 'bac' %}selected{% endif %}>Bac</option>
-                    </select>
+                    </select>  
+
+                    <br>                  
+        
+                    <button class="btn btn-danger button_remove_formation" type="button">Supprimer</button>
+
+                    <br>
 
                     <div class="col-md-12">
                         <hr class="trait-gris">
@@ -140,29 +149,30 @@
                 </div>
             {% endfor %}
 
-            <div class='add_formation'></div>
-
             <a href="" class="add_bloc_formation">+ Ajouter une formation +</a>
         </div> {# Fin accordeon formation #}
 
-        <h2 class="resume-title resume-title-competences inner-header"> COMPETENCES</h2>
+        <h2 class="resume-title resume-title-competences inner-header"> COMPETENCES <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
 
         <div class="accordeon">
             <label>Compétences</label>
-            <textarea name="skills" class="form-control" rows="3">{{ skills.skills }}</textarea>
+            <textarea name="skills" class="form-control" rows="4" placeholder="Liste de vos compétences :
+- Compétences 1
+- Compétences 2
+- ...">{{ skills.skills }}</textarea>
 
             <br>
 
             <label>Informatique</label>
-            <input type="text" name="informatique" value="{{ skills.informatique }}" class="form-control">
+            <input type="text" name="informatique" value="{{ skills.informatique }}" class="form-control" placeholder="Logiciels que vous maîtrisez">
         </div> {# Fin accordeon competences #}
 
-        <h2 class="resume-title resume-title-langues inner-header"> LANGUES</h2>
+        <h2 class="resume-title resume-title-langues inner-header"> LANGUES <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
         
         <div class="accordeon">
             {# Si l'utilisateur à enregistré plusieurs langues, on génère une div bloc_langues pour chaque formation #}
             {% for language in languages %}
-                <div class="bloc_langue">
+                <div class="bloc_langue" database_id="{{ language.id }}">
                     <input type="hidden" name="nb_of_languages[]">
 
                     <label>Langues</label>
@@ -189,21 +199,29 @@
                         <option value="courant" {% if language.languageLevel == 'courant' %}selected{% endif %}>Courant</option>
                     </select>
 
+                    <br>
+                    
+                    <button class="btn btn-danger button_remove_langue" type="button">Supprimer</button>
+
+                    <br>
+
                     <div class="col-md-12">
                         <hr class="trait-gris">
                     </div>
                 </div><!-- Fin bloc_langues -->
             {% endfor %}
-
-            <div class='add_langue'></div>
+            
             <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br><br>
         </div> {# Fin accordeon langue #}
         
-        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET</h2>
+        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
         
         <div class="accordeon">
             <div class="form-group">
-                <textarea name="hobbies" class="form-control" rows="3">{{ resume.hobbies }}</textarea>
+                <textarea name="hobbies" class="form-control" rows="4" placeholder="Liste de vos centres d'intêret :
+- Centre d'intérêt 1
+- Centre d'intérêt 2
+- ...">{{ resume.hobbies }}</textarea>
             </div>
         </div> {# Fin accordeon centres d'interet #}
         
