@@ -10,7 +10,7 @@
         <div id="header-box" class="col-md-12">
             <h3 class="resume-title resume-title-info-perso"> INFORMATIONS PERSONNELLES</h3>
             <ul>
-                <li><strong><span id="span-firstname">{% if user is not empty %}{{ user.firstname }}{% endif %}</span> {% if user is not empty %}{{ user.lastname|upper }}{% endif %}</span></strong></li>
+                <li><strong><span id="span-firstname">{% if user is not empty %}{{ user.firstname }}{% endif %}</span> <span id="span-lastname">{% if user is not empty %}{{ user.lastname|upper }}{% endif %}</span></strong></li>
                 <li>Email : <span id="span-email">{% if user is not empty %}{{ user.email }}{% endif %}</span></li>
                 <li>Téléphone : <span id="span-telephone">{% if user is not empty %}{{ user.telephone }}{% endif %}</span></li>
                 <li>Code postal : <span id="span-postcode">{% if user is not empty %}{{ user.postcode }}{% endif %}</span></li>
@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 {#<button class="btn btn-default reveal-btn" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>#}
                 
-                   <button type="button" class="btn btn-primary btn-reveal-cv" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>
+                   <button type="button" class="btn btn-default btn-reveal-cv" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Débloquer ce CV</button>
                     
                        {# <button class="btn btn-default reveal-btn" reference="{{ resume.id }}"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Valider</button>#}
             </div>
@@ -30,7 +30,7 @@
                {# <button class="btn btn-default favori-btn" reference="{{ resume.reference }}">Favori <span id="star{{ resume.reference }}" class="glyphicon {% if resume.favorite is null %}glyphicon-star-empty{% else %}glyphicon-star{% endif %}" aria-hidden="true"></span></button>#}
                 <button class="btn btn-default btn-reveal-cv"><i class="fa fa-star-o" aria-hidden="true"></i> Ajouter ce CV à vos favoris</button>
             </div>
-            <img src="{{ asset('img/bigLogo.png') }}" alt=""/>
+            <img src="{{ asset('img/hidden_info.png') }}" alt=""/>
         </div>
         {% endif %}
     </div>

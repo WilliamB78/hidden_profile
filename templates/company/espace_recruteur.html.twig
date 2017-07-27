@@ -20,9 +20,13 @@
         
         <div class="col-lg-4 col-sm-6 col-xs-12 recruteur_token">
             <div class="box-token">
-                <h3>VOS INFORMATIONS</h3><hr/>
+                <h3>VOS INFORMATIONS</h3>
+                <hr/>
                 <ul>
-                    <li>{{ company.name }}</li>
+                    <li><strong>{{ company.name|upper }}</strong></li>
+                    <li>Domaine d'activité : {{ company.activityArea }}</li>
+                    <li>Email : {{ company.email }}</li>
+                    <li>Téléphone : {{ company.telephone }}</li>
                     <li><a class="underlined" href="{{ path('company_edit_profile') }}">Modifier vos informations</a></li>
                 </ul>
             </div>
@@ -44,8 +48,11 @@
             <div class="box-token">
                 <h3>VOS COMMANDES</h3><hr/>
                 <ul>
-                    <li><a class="underlined" href="{{ path('orders_history') }}">Consulter votre historique de commande</a></li>
-                    <li><a class="underlined" href="{{ path('company_favorites_resumes') }}">Consulter les CV que vous avez mis de côté</a></li>
+                    <li>Vous avez passez X commandes.</li>
+                    <li><a class="underlined" href="{{ path('orders_history') }}">Consulter votre historique de commandes</a></li>
+                    <br>
+                    <li>Vous avez X CV dans vos favoris.</li>
+                    <li><a class="underlined" href="{{ path('company_favorites_resumes') }}">Consulter vos CV favoris</a></li>
                 </ul>
             </div>
         </div>    
