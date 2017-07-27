@@ -163,18 +163,18 @@ class UserController extends ControllerAbstract
     // Modification des informations personnelles des candidats
     public function editAction()
     {
-        $userId = $this->app['user.manager']->getUser()->getId();
-        
-        $user = $this->app['user.repository']->find($userId);
+        $userEmail = $this->app['user.manager']->getUser()->getEmail();
+        $user = $this->app['user.repository']->findByEmail($userEmail);
+        $userId = $user->getId();
                 
         if (!empty($_POST)){
             
-            $user = new User;
             
-            $id = $this->session->get('user')->getId();
+            
+           //$id = $this->session->get('user')->getId();
             
             $user
-                ->setId($id)
+                ->setId($userId)
                 ->setFirstname($_POST['firstname'])
                 ->setLastname($_POST['lastname'])    
                 ->setEmail($_POST['email'])      

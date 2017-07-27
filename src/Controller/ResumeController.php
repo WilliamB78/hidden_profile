@@ -43,17 +43,19 @@ class ResumeController extends ControllerAbstract
                 $languagesId[] = $languages[$i]->getId(); // Récupération dans un array des id des langues de l'utilisateur
             }
         }
+        else 
+        {           
+        }
             
         $errors = [];
         
         if(!empty($_POST))
-        {
+        {            
             $resume = new Resume;
             $experiences = new Experience;
             $studies = new Study;
             $skills = new Skill;
-            $languages = new Language;
-            
+            $languages = new Language; 
             // new security manager object to clean $_POST values (XSS)
             $this->app['security.manager']->sanitizePost();
             
@@ -237,8 +239,24 @@ class ResumeController extends ControllerAbstract
         }
         
         // S'il y a l'id de l'utilisateur dans l'url...
-        if(!is_null($id))
-        {
+//        if(!is_null($id))
+//        {
+            if (empty($resume)) {
+                $resume = new Resume();
+            }
+            if (empty($skills)) {
+                $skills = new Skill();
+            }
+            if (empty($experiences)) {
+                $experiences = [new Experience()];
+            }
+            if (empty($studies)) {
+                $studies = [new Study()];
+            }
+            if (empty($languages)) {
+                $languages = [new Language()];
+            }
+            
             // On retourne la vue pour qu'il édite son CV
             return $this->render(
                 'resume/edit.html.twig',
@@ -251,19 +269,19 @@ class ResumeController extends ControllerAbstract
                     'post' => $_POST
                 ]
             );
-        }
+//        }
         
         // La vue retournée par défaut :
-        return $this->render(
-            'resume/add.html.twig',
-            [
-                'post' => $_POST
-                //'resume' => $resume,
-                //'experiences' => $experiences,
-               // 'studies' => $studies,
-               // 'skills' => $skills
-            ]
-        );
+//        return $this->render(
+//            'resume/add.html.twig',
+//            [
+//                'post' => $_POST
+//                //'resume' => $resume,
+//                //'experiences' => $experiences,
+//               // 'studies' => $studies,
+//               // 'skills' => $skills
+//            ]
+//        );
     }
     
     public function deleteAction()
@@ -286,4 +304,17 @@ class ResumeController extends ControllerAbstract
         $this->app['experience.repository']->deleteByExperienceId($id);
         return 'Suppression';
     }
+    
+    public function deleteStudyAction($id)
+    {
+        $this->app['study.repository']->deleteByStudyId($id);
+        return 'Suppression';
+    }
+    
+    public function deleteLanguageAction($id)
+    {
+        $this->app['language.repository']->deleteByLanguageId($id);
+        return 'Suppression';
+    }    
+    
 }

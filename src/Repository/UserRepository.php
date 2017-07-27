@@ -30,6 +30,11 @@ class UserRepository extends RepositoryAbstract
         ;
 
         $this->persist($data, $where);
+        
+        if (empty($user->getId())) {
+           $user->setId($this->db->lastInsertId());
+
+        }
     }
     
     /**
@@ -117,9 +122,16 @@ EOS;
     
     public function findIdResumeByReference($reference)
     {
-        $result = $this->db->fetchAssoc('SELECT id, desired_jobs FROM resume WHERE reference = :reference', [':reference' => $reference]);
+        $result = $this->db->fetchAssoc('SELECT id, desired_job FROM resume WHERE reference = :reference', [':reference' => $reference]);
         
         return $result;
         
+    }
+    
+    public function lastInsertId()
+    {
+        $id = $this->db->lastInsertId();
+        
+        return $id;
     }
 }

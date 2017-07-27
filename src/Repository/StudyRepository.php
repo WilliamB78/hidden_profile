@@ -80,4 +80,9 @@ EOS;
     {
         $this->db->delete('study', ['user_id' => $userId]);
     }
+    
+    public function deleteByStudyId($studyId)
+    {
+        $this->db->delete('study', ['id' => $studyId]);
+    }
 }

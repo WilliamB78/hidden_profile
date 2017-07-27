@@ -2,62 +2,93 @@ $(function(){
     
     let blocExperience = $('.bloc_experience').first().clone();
 
-     $(".add_bloc_experience").click(function(e){
-         e.preventDefault();
+     $('body').on('click','.add_bloc_experience',function(e){
+        e.preventDefault();
+        
+         blocExperience.clone()
+            .find("input, textarea").val("").end()
+            .attr('database_id', null)
+            .insertBefore($(this));
+     });
+     
+    let blocFormation = $('.bloc_formation').first().clone();
 
-         blocExperience
-                                   .find("input, textarea").val("").end()
-                                   .attr('database_id', null)
-                                   .insertBefore(".add_experience");
-
+     $('body').on('click','.add_bloc_formation',function(e){
+        e.preventDefault();
+        
+         blocFormation.clone()
+            .find("input, textarea").val("").end()
+            .attr('database_id', null)
+            .insertBefore($(this));
      });
 
-     $(".add_bloc_formation").click(function(ev){
-         ev.preventDefault();
+    let blocLangue = $('.bloc_langue').first().clone();
 
-         $(".bloc_formation:last").clone()
-                                 .find("input, textarea").val("").end()
-                                 .appendTo(".add_formation");
+     $('body').on('click','.add_bloc_langue',function(e){
+        e.preventDefault();
+        
+         blocLangue.clone()
+            .find("input, textarea").val("").end()
+            .attr('database_id', null)
+            .insertBefore($(this));
      });
-
-     $(".add_bloc_langue").click(function(eve){
-         eve.preventDefault();
-
-         $(".bloc_langue:last").clone()
-                                 .find("input, textarea").val("").end()
-                                 .appendTo(".add_langue");
-     });
-
+     
      $('.inner-header').next().hide();
     
      $('.inner-header').on('click',function(){
 	if($(this).next().is(":hidden")){
-		$('.inner-header').next('div:visible').slideToggle(400);
-		$(this).next().slideToggle(400);
-
+            $('.inner-header').next('div:visible').slideToggle(400);
+            $(this).next().slideToggle(400);
 	}
-
      });
     
      $('.resume-form').on('click',function(evt){
-		evt.stopPropagation();
-
+        evt.stopPropagation();
      });
      
-     $('body').on('click','.button_remove', function(){
-         
-        let divParent = $(this).parent();
-        if (divParent.hasClass('bloc_experience') === true){
+     $('body').on('click','.button_remove_experience', function(){
+        let divParent = $(this).closest('.bloc_experience');
             databaseId = divParent.attr('database_id');
-            let url = '../supprimer_experience/' + databaseId;
-//            $.post(url, function (response){
-//               console.log(response);           
-//            });
-            
-        }
-        console.log(blocExperience);
-        divParent.fadeOut(100);
+            if (databaseId != undefined && databaseId != '') {
+                
+                let url = '../supprimer_experience/' + databaseId;
 
+                $.post(url, function (response){
+                   console.log(response);           
+                });
+            }
+            
+        divParent.fadeOut(100).remove();
+     });
+     
+     $('body').on('click','.button_remove_formation', function(){
+        let divParent = $(this).closest('.bloc_formation');
+            databaseId = divParent.attr('database_id');
+            if (databaseId != undefined && databaseId != '') {
+                
+                let url = '../supprimer_formation/' + databaseId;
+
+                $.post(url, function (response){
+                   console.log(response);           
+                });
+            }
+            
+        divParent.fadeOut(100).remove();
+     });
+     
+     $('body').on('click','.button_remove_langue', function(){
+        let divParent = $(this).closest('.bloc_langue');
+            databaseId = divParent.attr('database_id');
+            if (databaseId != undefined && databaseId != '') {
+                
+                let url = '../supprimer_langue/' + databaseId;
+
+                $.post(url, function (response){
+                   console.log(response);           
+                });
+            }
+            
+        divParent.fadeOut(100).remove();
      });
 });
 
