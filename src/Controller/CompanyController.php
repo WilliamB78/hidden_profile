@@ -308,7 +308,11 @@ class CompanyController extends ControllerAbstract{
                  $filters[] = " AND skills LIKE '%$_GET[competences]%'"; 
              }
         
-            $idCompany = $this->session->get('company')->getId();
+            $email = $this->session->get('company')->getEmail();
+            
+            $company = $this->app['company.repository']->findByEmail($email);
+            
+            $idCompany = $company->getId();
              
              $resumes = $this->app['resume.repository']->findByJob($_GET['titre_poste'],$idCompany, $filters);
              

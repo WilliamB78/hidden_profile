@@ -30,6 +30,11 @@ class UserRepository extends RepositoryAbstract
         ;
 
         $this->persist($data, $where);
+        
+        if (empty($user->getId())) {
+           $user->setId($this->db->lastInsertId());
+
+        }
     }
     
     /**
@@ -121,5 +126,12 @@ EOS;
         
         return $result;
         
+    }
+    
+    public function lastInsertId()
+    {
+        $id = $this->db->lastInsertId();
+        
+        return $id;
     }
 }

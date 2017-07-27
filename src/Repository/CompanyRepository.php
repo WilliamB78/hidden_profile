@@ -45,6 +45,11 @@ class CompanyRepository extends RepositoryAbstract
         ;
 
         $this->persist($data, $where);
+        
+        if (empty($company->getId())) {
+           $company->setId($this->db->lastInsertId());
+
+        }
     }
     
       public function findByEmail($email)
