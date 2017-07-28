@@ -5,10 +5,8 @@
     <form method="post" class="form-resume" id="form-resume-marginTop">
         <h3>AJOUTER VOTRE CV</h3>
         
-        <p><span class="red-star">*</span> Champs obligatoires</p>
-        <br>
         <div class="form-group">
-            <label>Domaine professionnel <span class="red-star">*</span></label>
+            <label>Domaine professionnel</label>
             <select name="professionnal_domain" class="form-control">
                 <option value="">Choisir le domaine professionnel</option>
                 <option value="administration">Administration</option>
@@ -45,12 +43,12 @@
         </div>
 
         <div class="form-group">
-            <label>Poste recherché <span class="red-star">*</span></label>
+            <label>Poste recherché</label>
             <input type="text" name="desired_job" class="form-control" placeholder="Poste recherché">
         </div>
 
         <div class="form-group">
-            <label>Type de contrat recherché <span class="red-star">*</span></label>
+            <label>Type de contrat recherché</label>
             <select name="contract_type" class="form-control">
                 <option value="">Choisir un contrat</option>
                 <option value="cdi">CDI</option>
@@ -66,12 +64,12 @@
                 <input type="hidden" name="nb_of_experiences[]">
 
                 <div class="form-group">
-                    <label>Nom du poste <span class="red-star">*</span></label>
+                    <label>Nom du poste</label>
                     <input type="text" name="job_name[]" class="form-control" placeholder="Nom du poste">
                 </div>
 
                 <div class="form-group">
-                    <label>Nombre d'années <span class="red-star">*</span></label>
+                    <label>Nombre d'années</label>
                     <select name="year_of_experience[]" class="form-control">
                       <option value="">Choisir le niveau</option>
                         <option value="inferieur_6mois">inférieur à 6 mois</option>
@@ -84,12 +82,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Sociétés <span class="red-star">*</span></label>
+                    <label>Sociétés</label>
                     <input type="text" name="companies[]" class="form-control" placeholder="Sociétés">
                 </div>
 
                 <div class="form-group">
-                    <label>Responsabilités <span class="red-star">*</span></label>
+                    <label>Responsabilités</label>
                     <textarea name="description[]" class="form-control" rows="3"></textarea>
                 </div>
 
@@ -110,12 +108,12 @@
                 <input type="hidden" name="nb_of_studies[]">
 
                 <div class="form-group">
-                    <label>Nom de la formation <span class="red-star">*</span></label>
+                    <label>Nom de la formation</label>
                     <input type="text" name="name[]" class="form-control" placeholder="Nom de la formation">
                 </div>
 
                     <div class="form-group">
-                    <label>Niveau <span class="red-star">*</span></label>
+                    <label>Niveau</label>
                     <select name="level[]" class="form-control">
                         <option value="">Choisir le niveau</option>
                         <option value="bac_sup5">Bac supérieur à 5 (ou équivalent)</option>
@@ -139,12 +137,12 @@
         
         <div class="accordeon">
             <div class="form-group">
-                <label>Compétences <span class="red-star">*</span></label>
+                <label>Compétences</label>
                 <textarea name="skills" class="form-control" rows="3"></textarea>
             </div>
 
             <div class="form-group">
-                <label>Informatique <span class="red-star">*</span></label>
+                <label>Informatique</label>
                 <input type="text" name="informatique" value="{% if post is not empty %}{{ post.informatique }}{% endif %}" class="form-control">
             </div>
         </div> {# Fin accordeon competences #}
@@ -156,7 +154,7 @@
                 <input type="hidden" name="nb_of_languages[]">
 
                 <div class="form-group">
-                    <label>Sélectionnez un langue <span class="red-star">*</span></label>
+                    <label>Sélectionnez un langue</label>
                     <select name="language_select[]" class="form-control">
                         <option value="">Choisir une langue</option>
                         <option value="anglais">Anglais</option>
@@ -172,7 +170,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Sélectionnez votre niveau <span class="red-star">*</span></label>
+                    <label>Sélectionnez votre niveau</label>
                     <select name="language_level[]" class="form-control">
                         <option value="">Votre niveau</option>
                         <option value="moyen">Moyen</option>
@@ -190,11 +188,11 @@
             <a href='' class="add_bloc_langue">+ Ajouter une langue +</a><br>
         </div> {# Fin accordeon langues #}
         
-        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET</h2>
+        <h2 class="resume-title resume-title-centres-interet inner-header"> CENTRES D'INTERET <small style="color:inherit"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></small></h2>
         
         <div class="accordeon">
             <div class="form-group">
-                <label>Centres d'intérêts <span class="red-star">*</span></label>
+                <label>Centres d'intérêts</label>
                 <textarea name="hobbies" class="form-control" rows="3"></textarea>
             </div>
         </div> {# Fin accordeon centres d'interêt #}

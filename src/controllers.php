@@ -109,6 +109,18 @@ $user
     ->bind('user_delete_experience')
 ;
 
+//route pour supprimer une experience
+$user
+    ->post('/supprimer_formation/{id}', 'resume.controller:deleteStudyAction')
+    ->bind('user_delete_study')
+;
+
+//route pour supprimer une experience
+$user
+    ->post('/supprimer_langue/{id}', 'resume.controller:deleteLanguageAction')
+    ->bind('user_delete_language')
+;
+
 // ROUTE D'ENREGISTREMENT CONNEXION ET DECONNEXION UTILISATEURS ET ENTREPRISE DIMITRI ////// 
 
 $app
